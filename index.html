@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LiftIQ — Train smarter. Track everything.</title>
+  <meta name="description" content="AI-powered lifting companion with smart weight suggestions, nutrition tracking, and programming built on peer-reviewed resistance training research." />
+  <meta name="theme-color" content="#0a0a0a" />
+  <link rel="canonical" href="https://liftiqsolutions.app/" />
+  <link rel="alternate" hreflang="en" href="https://liftiqsolutions.app/" />
+  <link rel="alternate" hreflang="es" href="https://liftiqsolutions.app/es/" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="LiftIQ — Train smarter. Track everything." />
+  <meta property="og:description" content="AI-powered lifting companion with smart weight suggestions and programming built on peer-reviewed research." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://liftiqsolutions.app/" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg:       #0a0a0a;
+      --surface:  #141414;
+      --surface2: #1a1a1a;
+      --border:   #1f1f1f;
+      --text:     #f5f5f5;
+      --muted:    #8a8a8a;
+      --muted2:   #a8a8a8;
+      --dim:      #606060;
+      --accent:   #f97316;
+      --accent2:  #ea580c;
+      --accent3:  #fb923c;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    img { max-width: 100%; display: block; }
+
+    /* ── Header ── */
+    header.site {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(10,10,10,0.82);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .brand-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .brand-link:hover { text-decoration: none; }
+    .logo-mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 0 20px rgba(249,115,22,0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .logo-mark svg { width: 20px; height: 20px; }
+    .brand {
+      font-size: 19px;
+      font-weight: 800;
+      letter-spacing: -0.4px;
+      color: var(--text);
+    }
+    .brand .accent {
+      background: linear-gradient(135deg, var(--accent), var(--accent3));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .nav-links {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+    .nav-links a {
+      color: var(--muted2);
+      font-size: 14px;
+      font-weight: 500;
+    }
+    .nav-links a:hover { color: var(--text); text-decoration: none; }
+    .lang-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 2px;
+      font-size: 13px;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 4px 4px;
+    }
+    .lang-toggle a {
+      padding: 4px 10px;
+      border-radius: 999px;
+      color: var(--muted);
+      font-weight: 600;
+    }
+    .lang-toggle a.active {
+      background: var(--surface2);
+      color: var(--text);
+    }
+    .lang-toggle a:hover { text-decoration: none; color: var(--text); }
+
+    @media (max-width: 720px) {
+      .nav-links a.nav-only { display: none; }
+    }
+
+    /* ── Containers ── */
+    .wrap {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      position: relative;
+      padding: 80px 24px 72px;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 50% 0%, rgba(249,115,22,0.18), transparent 70%),
+        radial-gradient(ellipse 40% 40% at 85% 30%, rgba(234,88,12,0.10), transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 1120px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 48px;
+      align-items: center;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(249,115,22,0.08);
+      border: 1px solid rgba(249,115,22,0.22);
+      border-radius: 999px;
+      padding: 6px 14px;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--accent);
+      letter-spacing: 0.3px;
+      margin-bottom: 22px;
+    }
+    .eyebrow .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 8px var(--accent);
+    }
+    h1.hero-title {
+      font-size: clamp(40px, 6vw, 68px);
+      font-weight: 800;
+      letter-spacing: -2px;
+      line-height: 1.02;
+      margin-bottom: 20px;
+    }
+    h1.hero-title .grad {
+      background: linear-gradient(135deg, var(--accent), var(--accent3));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-sub {
+      font-size: clamp(16px, 1.6vw, 19px);
+      color: var(--muted2);
+      max-width: 520px;
+      margin-bottom: 36px;
+      line-height: 1.55;
+    }
+    .cta-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    /* App Store badge — inline SVG, Apple-styled */
+    .app-store-badge {
+      display: inline-block;
+      transition: transform 0.15s ease, opacity 0.15s ease;
+    }
+    .app-store-badge:hover {
+      transform: translateY(-1px);
+      text-decoration: none;
+    }
+    .app-store-badge svg {
+      height: 54px;
+      width: auto;
+      display: block;
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 22px;
+      background: transparent;
+      border: 1px solid #2a2a2a;
+      color: var(--text);
+      font-size: 15px;
+      font-weight: 600;
+      border-radius: 12px;
+      transition: border-color 0.15s, color 0.15s;
+    }
+    .btn-secondary:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .btn-secondary svg { width: 14px; height: 14px; }
+
+    /* Phone frame */
+    .phone-frame {
+      position: relative;
+      width: 100%;
+      max-width: 320px;
+      margin: 0 auto;
+      aspect-ratio: 9 / 19.5;
+      background: #000;
+      border-radius: 44px;
+      padding: 12px;
+      border: 2px solid #2a2a2a;
+      box-shadow:
+        0 0 0 1px rgba(249,115,22,0.18),
+        0 30px 80px rgba(249,115,22,0.18),
+        0 20px 60px rgba(0,0,0,0.6);
+    }
+    .phone-screen {
+      width: 100%;
+      height: 100%;
+      border-radius: 32px;
+      background: linear-gradient(180deg, #141414, #0a0a0a);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--dim);
+      font-size: 13px;
+    }
+    .phone-screen img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .phone-notch {
+      position: absolute;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 110px;
+      height: 28px;
+      background: #000;
+      border-radius: 999px;
+      z-index: 2;
+    }
+
+    @media (max-width: 860px) {
+      .hero { padding: 56px 20px 48px; }
+      .hero-inner { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+      .hero-sub { margin-left: auto; margin-right: auto; }
+      .eyebrow { margin-left: auto; margin-right: auto; }
+      .cta-row { justify-content: center; }
+      .phone-frame { max-width: 260px; }
+    }
+
+    /* ── Trust bar ── */
+    .trust {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: var(--surface);
+    }
+    .trust-row {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 20px 24px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 14px 32px;
+      color: var(--muted);
+      font-size: 13.5px;
+      font-weight: 500;
+    }
+    .trust-row span {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .trust-row svg {
+      width: 16px;
+      height: 16px;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+
+    /* ── Sections ── */
+    section.bloc { padding: 96px 24px; }
+    @media (max-width: 720px) { section.bloc { padding: 72px 20px; } }
+
+    .section-head {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+    .section-kicker {
+      display: inline-block;
+      font-size: 12.5px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+    .section-head h2 {
+      font-size: clamp(30px, 4vw, 44px);
+      font-weight: 800;
+      letter-spacing: -1px;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    .section-head p {
+      color: var(--muted2);
+      font-size: 17px;
+      max-width: 620px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* ── Features ── */
+    .features-grid {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 18px;
+    }
+    .feature {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 28px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .feature:hover {
+      border-color: rgba(249,115,22,0.35);
+      transform: translateY(-2px);
+    }
+    .feature-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: rgba(249,115,22,0.12);
+      border: 1px solid rgba(249,115,22,0.24);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+      color: var(--accent);
+    }
+    .feature-icon svg { width: 22px; height: 22px; }
+    .feature h3 {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+      letter-spacing: -0.2px;
+    }
+    .feature p {
+      color: var(--muted2);
+      font-size: 14.5px;
+      line-height: 1.55;
+    }
+
+    /* ── Science section ── */
+    .science {
+      background: linear-gradient(180deg, #0a0a0a, #0d0906);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .science-inner {
+      max-width: 980px;
+      margin: 0 auto;
+    }
+    .principles {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 18px;
+      margin-top: 8px;
+    }
+    .principle {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 14px 14px 0;
+      padding: 22px 24px;
+    }
+    .principle h4 {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+    .principle p {
+      color: var(--muted2);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+    .citation {
+      margin-top: 48px;
+      padding: 20px 24px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .citation strong {
+      color: var(--muted2);
+      display: block;
+      margin-bottom: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* ── Screenshots ── */
+    .shots {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+      overflow: hidden;
+    }
+    .shots-scroller {
+      display: flex;
+      gap: 20px;
+      overflow-x: auto;
+      padding: 8px 4px 24px;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .shots-scroller::-webkit-scrollbar { display: none; }
+    .shot {
+      flex: 0 0 auto;
+      width: 240px;
+      aspect-ratio: 9 / 19.5;
+      border-radius: 28px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      scroll-snap-align: center;
+      position: relative;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    }
+    .shot img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .shot .placeholder {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--dim);
+      font-size: 12px;
+      text-align: center;
+      padding: 20px;
+      line-height: 1.5;
+    }
+
+    /* ── Pricing ── */
+    .pricing-inner {
+      max-width: 820px;
+      margin: 0 auto;
+    }
+    .plans {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-bottom: 28px;
+    }
+    @media (max-width: 600px) { .plans { grid-template-columns: 1fr; } }
+    .plan {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 28px;
+      position: relative;
+    }
+    .plan.featured {
+      border-color: rgba(249,115,22,0.45);
+      background: linear-gradient(180deg, rgba(249,115,22,0.06), var(--surface));
+      box-shadow: 0 10px 40px rgba(249,115,22,0.08);
+    }
+    .plan-tag {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 999px;
+      letter-spacing: 0.4px;
+    }
+    .plan h3 {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      margin-bottom: 10px;
+    }
+    .plan .price {
+      font-size: 36px;
+      font-weight: 800;
+      letter-spacing: -1px;
+      color: var(--text);
+    }
+    .plan .price span {
+      font-size: 14px;
+      color: var(--muted);
+      font-weight: 500;
+    }
+    .plan .save {
+      font-size: 13px;
+      color: var(--accent);
+      font-weight: 600;
+      margin-top: 6px;
+    }
+    .pricing-note {
+      text-align: center;
+      color: var(--muted);
+      font-size: 13.5px;
+      margin-top: 10px;
+    }
+
+    /* ── Final CTA ── */
+    .finale {
+      background:
+        radial-gradient(ellipse 70% 80% at 50% 30%, rgba(249,115,22,0.12), transparent 70%),
+        var(--bg);
+      text-align: center;
+    }
+    .finale h2 {
+      font-size: clamp(32px, 5vw, 56px);
+      font-weight: 800;
+      letter-spacing: -1.4px;
+      line-height: 1.05;
+      margin-bottom: 28px;
+    }
+    .finale-cta {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+    }
+    .qr-card {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 16px 20px;
+    }
+    .qr-card .qr-img {
+      width: 96px;
+      height: 96px;
+      border-radius: 10px;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      color: #666;
+      font-size: 11px;
+      text-align: center;
+    }
+    .qr-card .qr-img img { width: 100%; height: 100%; object-fit: contain; }
+    .qr-card .qr-text { text-align: left; max-width: 200px; }
+    .qr-card .qr-text strong {
+      display: block;
+      color: var(--text);
+      font-size: 14px;
+      margin-bottom: 2px;
+    }
+    .qr-card .qr-text span {
+      color: var(--muted);
+      font-size: 12.5px;
+      line-height: 1.4;
+    }
+
+    /* ── Footer ── */
+    footer.site {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding: 56px 24px 28px;
+    }
+    .foot-grid {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px 24px;
+      padding-bottom: 36px;
+      border-bottom: 1px solid var(--border);
+    }
+    @media (max-width: 720px) {
+      .foot-grid { grid-template-columns: 1fr 1fr; gap: 32px 20px; }
+      .foot-brand { grid-column: 1 / -1; }
+    }
+    .foot-brand p {
+      color: var(--muted);
+      font-size: 13.5px;
+      line-height: 1.6;
+      margin-top: 14px;
+      max-width: 340px;
+    }
+    .foot-col h4 {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+    .foot-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .foot-col a {
+      color: var(--muted2);
+      font-size: 14px;
+    }
+    .foot-col a:hover { color: var(--accent); text-decoration: none; }
+    .foot-bottom {
+      max-width: 1120px;
+      margin: 28px auto 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 14px;
+      color: var(--dim);
+      font-size: 12.5px;
+    }
+    .foot-bottom .lang-toggle { border-color: #222; }
+
+    /* utils */
+    .sr-only {
+      position: absolute; width: 1px; height: 1px;
+      padding: 0; margin: -1px; overflow: hidden;
+      clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+    }
+  </style>
+</head>
+<body>
+
+<header class="site">
+  <nav class="nav" aria-label="Primary">
+    <a class="brand-link" href="/" aria-label="LiftIQ home">
+      <span class="logo-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="color:#fff">
+          <path d="M6 8v8"/><path d="M18 8v8"/><path d="M3 10v4"/><path d="M21 10v4"/><path d="M6 12h12"/>
+        </svg>
+      </span>
+      <span class="brand">Lift<span class="accent">IQ</span></span>
+    </a>
+    <div class="nav-links">
+      <a class="nav-only" href="#features">Features</a>
+      <a class="nav-only" href="#science">Science</a>
+      <a class="nav-only" href="#pricing">Pricing</a>
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <a href="/" class="active" aria-current="page">EN</a>
+        <a href="/es/">ES</a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ── Hero ── -->
+  <section class="hero" aria-label="Introduction">
+    <div class="hero-inner">
+      <div>
+        <span class="eyebrow"><span class="dot"></span> Now on the App Store</span>
+        <h1 class="hero-title">Train smarter.<br/><span class="grad">Track everything.</span></h1>
+        <p class="hero-sub">
+          LiftIQ is your AI-powered lifting companion. Smart weight suggestions, barcode-scan nutrition, and programming built on peer-reviewed resistance training science.
+        </p>
+        <div class="cta-row">
+          <a class="app-store-badge" href="https://apps.apple.com/app/id6759868402" target="_blank" rel="noopener noreferrer" aria-label="Download LiftIQ on the App Store">
+            <!-- Apple App Store badge — simplified inline SVG -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 54" role="img" aria-label="Download on the App Store">
+              <rect x="0" y="0" width="180" height="54" rx="10" fill="#000" stroke="#fff" stroke-width="1"/>
+              <g fill="#fff">
+                <!-- Apple logo -->
+                <path d="M27.5 28.2c0-3.3 2.7-4.9 2.8-5-1.5-2.2-3.9-2.5-4.7-2.5-2-.2-3.9 1.2-4.9 1.2s-2.6-1.2-4.2-1.2c-2.2 0-4.2 1.3-5.3 3.3-2.3 3.9-.6 9.7 1.6 12.9 1.1 1.5 2.4 3.3 4.1 3.2 1.6-.1 2.3-1.1 4.2-1.1 1.9 0 2.5 1.1 4.2 1 1.7 0 2.8-1.6 3.9-3.1 1.2-1.8 1.7-3.5 1.8-3.6-.1-.1-3.5-1.3-3.5-5.1zM24.3 18.7c.9-1 1.4-2.5 1.3-3.9-1.2 0-2.7.8-3.6 1.9-.8.9-1.5 2.4-1.3 3.8 1.3.1 2.7-.7 3.6-1.8z"/>
+                <!-- Text: Download on the -->
+                <text x="44" y="23" font-family="-apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif" font-size="9" font-weight="400">Download on the</text>
+                <!-- Text: App Store -->
+                <text x="44" y="41" font-family="-apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif" font-size="18" font-weight="600" letter-spacing="-0.4">App Store</text>
+              </g>
+            </svg>
+          </a>
+          <a class="btn-secondary" href="#features">
+            See features
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="phone-frame" aria-hidden="true">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+          <img src="/screenshots/hero.png" alt="" onerror="this.style.display='none';this.parentNode.insertAdjacentHTML('beforeend','<div class=placeholder>Screenshot<br/>coming soon</div>');" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Trust bar ── -->
+  <div class="trust" aria-label="Highlights">
+    <div class="trust-row">
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v14.5"/><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 17v4"/></svg> Built on 2026 ACSM research</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 14-day free trial</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="3"/><line x1="12" y1="18" x2="12" y2="18"/></svg> iPhone + iPad</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg> No ads. Ever.</span>
+    </div>
+  </div>
+
+  <!-- ── Features ── -->
+  <section class="bloc" id="features">
+    <div class="section-head">
+      <span class="section-kicker">Features</span>
+      <h2>Everything you need, nothing you don't.</h2>
+      <p>Built for lifters who want structured training, honest nutrition tracking, and real feedback — without the bloat.</p>
+    </div>
+
+    <div class="features-grid">
+      <article class="feature">
+        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.39 6.94H22l-5.8 4.21 2.22 6.85L12 15.78l-6.42 4.22 2.22-6.85L2 8.94h7.61z"/></svg></div>
+        <h3>AI-generated workouts</h3>
+        <p>Plans built around your goal, experience, schedule, and equipment. Fresh programming every week.</p>
+      </article>
+
+      <article class="feature">
+        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19h16"/><path d="M6 15l4-8 4 6 4-4"/></svg></div>
+        <h3>Smart weight suggestions</h3>
+        <p>Per-lift progression that adjusts to your recent RPE, rep performance, and recovery. No more guessing the next jump.</p>
+      </article>
+
+      <article class="feature">
+        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 4v16"/><path d="M10 4v16"/><path d="M14 4v16"/><path d="M17 4v16"/></svg></div>
+        <h3>Barcode + photo nutrition</h3>
+        <p>Scan any product barcode or snap a food photo. LiftIQ estimates macros in seconds, so logging stays out of the way.</p>
+      </article>
+
+      <article class="feature">
+        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="14 7 21 7 21 14"/></svg></div>
+        <h3>Progress you can see</h3>
+        <p>PR history, volume trends, streaks, and 1RM projections — auto-updated as you train. Watch the numbers move.</p>
+      </article>
+
+      <article class="feature">
+        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+        <h3>AI coach chat</h3>
+        <p>Ask form questions, tweak your split, troubleshoot plateaus. Your context is baked in — your goals, lifts, and history.</p>
+      </article>
+
+      <article class="feature">
+        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.6a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.07a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.79 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+        <h3>Apple Health integration</h3>
+        <p>Read steps and active calories, write back workouts and body weight. Your health timeline stays in one place.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ── Science ── -->
+  <section class="bloc science" id="science">
+    <div class="science-inner">
+      <div class="section-head" style="margin-bottom: 40px;">
+        <span class="section-kicker">The Science</span>
+        <h2>Built on peer-reviewed research.</h2>
+        <p>LiftIQ's programming logic is aligned with the <strong style="color:var(--text)">2026 ACSM Position Stand on Resistance Training</strong> — an umbrella review synthesizing 137 systematic reviews and data from more than 30,000 participants.</p>
+      </div>
+
+      <div class="principles">
+        <div class="principle">
+          <h4>Progressive overload</h4>
+          <p>Load and volume are tracked per-lift. The app surfaces small, manageable jumps over time — the single strongest driver of strength and hypertrophy adaptation.</p>
+        </div>
+        <div class="principle">
+          <h4>Frequency matters</h4>
+          <p>Programs target each major movement pattern at least twice per week, matching the training frequencies that consistently produce adaptation in the literature.</p>
+        </div>
+        <div class="principle">
+          <h4>Full range of motion</h4>
+          <p>The exercise library emphasises working through a full ROM, with form cues for each lift. Full-ROM training is associated with stronger hypertrophy outcomes than partials.</p>
+        </div>
+        <div class="principle">
+          <h4>Individualization over rigid periodization</h4>
+          <p>Your goal, experience, and recovery drive programming decisions. The research shows structured progression matters more than sticking to a specific periodization model.</p>
+        </div>
+      </div>
+
+      <div class="citation">
+        <strong>Full citation</strong>
+        Currier BS, D'Souza AC, Fiatarone Singh MA, et al. American College of Sports Medicine Position Stand. Resistance Training Prescription for Muscle Function, Hypertrophy, and Physical Performance in Healthy Adults: An Overview of Reviews. <em>Med Sci Sports Exerc.</em> 2026;58(4):851–872. doi:10.1249/MSS.0000000000003897
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Screenshots ── -->
+  <section class="bloc" id="screenshots">
+    <div class="section-head">
+      <span class="section-kicker">A closer look</span>
+      <h2>Designed for the gym floor.</h2>
+      <p>Glanceable, one-handed, and fast between sets.</p>
+    </div>
+
+    <div class="shots">
+      <div class="shots-scroller" role="list">
+        <figure class="shot" role="listitem">
+          <img src="/screenshots/screen-1.png" alt="Home dashboard showing today's workout, ready sets, and weekly volume summary" onerror="this.style.display='none';this.parentNode.insertAdjacentHTML('beforeend','<div class=placeholder>Dashboard<br/>screenshot</div>');" />
+        </figure>
+        <figure class="shot" role="listitem">
+          <img src="/screenshots/screen-2.png" alt="Active workout screen with set-by-set weight suggestions and RPE logging" onerror="this.style.display='none';this.parentNode.insertAdjacentHTML('beforeend','<div class=placeholder>Workout<br/>screenshot</div>');" />
+        </figure>
+        <figure class="shot" role="listitem">
+          <img src="/screenshots/screen-3.png" alt="Nutrition log with barcode-scanned meals and macro breakdown" onerror="this.style.display='none';this.parentNode.insertAdjacentHTML('beforeend','<div class=placeholder>Nutrition<br/>screenshot</div>');" />
+        </figure>
+        <figure class="shot" role="listitem">
+          <img src="/screenshots/screen-4.png" alt="Progress view with personal records, streak count, and 1RM projections" onerror="this.style.display='none';this.parentNode.insertAdjacentHTML('beforeend','<div class=placeholder>Progress<br/>screenshot</div>');" />
+        </figure>
+        <figure class="shot" role="listitem">
+          <img src="/screenshots/screen-5.png" alt="AI coach chat answering a question about programming" onerror="this.style.display='none';this.parentNode.insertAdjacentHTML('beforeend','<div class=placeholder>AI Coach<br/>screenshot</div>');" />
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Pricing ── -->
+  <section class="bloc" id="pricing">
+    <div class="pricing-inner">
+      <div class="section-head">
+        <span class="section-kicker">Pricing</span>
+        <h2>Start with a 14-day free trial.</h2>
+        <p>Cancel anytime from your App Store subscriptions. No ads, no data selling — ever.</p>
+      </div>
+
+      <div class="plans">
+        <div class="plan">
+          <h3>Monthly</h3>
+          <div class="price">$9.99 <span>/ month</span></div>
+          <div class="save" style="visibility:hidden">—</div>
+        </div>
+        <div class="plan featured">
+          <span class="plan-tag">Best value</span>
+          <h3>Annual</h3>
+          <div class="price">$59.99 <span>/ year</span></div>
+          <div class="save">Save 50% vs monthly</div>
+        </div>
+      </div>
+
+      <div style="text-align:center;">
+        <a class="app-store-badge" href="https://apps.apple.com/app/id6759868402" target="_blank" rel="noopener noreferrer" aria-label="Start your free trial on the App Store">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 54" role="img" aria-label="Download on the App Store">
+            <rect x="0" y="0" width="180" height="54" rx="10" fill="#000" stroke="#fff" stroke-width="1"/>
+            <g fill="#fff">
+              <path d="M27.5 28.2c0-3.3 2.7-4.9 2.8-5-1.5-2.2-3.9-2.5-4.7-2.5-2-.2-3.9 1.2-4.9 1.2s-2.6-1.2-4.2-1.2c-2.2 0-4.2 1.3-5.3 3.3-2.3 3.9-.6 9.7 1.6 12.9 1.1 1.5 2.4 3.3 4.1 3.2 1.6-.1 2.3-1.1 4.2-1.1 1.9 0 2.5 1.1 4.2 1 1.7 0 2.8-1.6 3.9-3.1 1.2-1.8 1.7-3.5 1.8-3.6-.1-.1-3.5-1.3-3.5-5.1zM24.3 18.7c.9-1 1.4-2.5 1.3-3.9-1.2 0-2.7.8-3.6 1.9-.8.9-1.5 2.4-1.3 3.8 1.3.1 2.7-.7 3.6-1.8z"/>
+              <text x="44" y="23" font-family="-apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif" font-size="9" font-weight="400">Download on the</text>
+              <text x="44" y="41" font-family="-apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif" font-size="18" font-weight="600" letter-spacing="-0.4">App Store</text>
+            </g>
+          </svg>
+        </a>
+        <p class="pricing-note">Prices shown in USD. Local pricing applies.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Final CTA ── -->
+  <section class="bloc finale">
+    <h2>Ready to train smarter?</h2>
+    <div class="finale-cta">
+      <a class="app-store-badge" href="https://apps.apple.com/app/id6759868402" target="_blank" rel="noopener noreferrer" aria-label="Download LiftIQ on the App Store">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 54" role="img" aria-label="Download on the App Store">
+          <rect x="0" y="0" width="180" height="54" rx="10" fill="#000" stroke="#fff" stroke-width="1"/>
+          <g fill="#fff">
+            <path d="M27.5 28.2c0-3.3 2.7-4.9 2.8-5-1.5-2.2-3.9-2.5-4.7-2.5-2-.2-3.9 1.2-4.9 1.2s-2.6-1.2-4.2-1.2c-2.2 0-4.2 1.3-5.3 3.3-2.3 3.9-.6 9.7 1.6 12.9 1.1 1.5 2.4 3.3 4.1 3.2 1.6-.1 2.3-1.1 4.2-1.1 1.9 0 2.5 1.1 4.2 1 1.7 0 2.8-1.6 3.9-3.1 1.2-1.8 1.7-3.5 1.8-3.6-.1-.1-3.5-1.3-3.5-5.1zM24.3 18.7c.9-1 1.4-2.5 1.3-3.9-1.2 0-2.7.8-3.6 1.9-.8.9-1.5 2.4-1.3 3.8 1.3.1 2.7-.7 3.6-1.8z"/>
+            <text x="44" y="23" font-family="-apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif" font-size="9" font-weight="400">Download on the</text>
+            <text x="44" y="41" font-family="-apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif" font-size="18" font-weight="600" letter-spacing="-0.4">App Store</text>
+          </g>
+        </svg>
+      </a>
+
+      <div class="qr-card">
+        <div class="qr-img">
+          <img src="/qr.png" alt="QR code to the LiftIQ App Store page" onerror="this.style.display='none';this.parentNode.textContent='QR';" />
+        </div>
+        <div class="qr-text">
+          <strong>Scan to download</strong>
+          <span>Point your phone camera at the code to open LiftIQ on the App Store.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="foot-grid">
+    <div class="foot-brand">
+      <a class="brand-link" href="/" aria-label="LiftIQ home">
+        <span class="logo-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="color:#fff">
+            <path d="M6 8v8"/><path d="M18 8v8"/><path d="M3 10v4"/><path d="M21 10v4"/><path d="M6 12h12"/>
+          </svg>
+        </span>
+        <span class="brand">Lift<span class="accent">IQ</span></span>
+      </a>
+      <p>An AI-powered lifting companion informed by peer-reviewed resistance training research.</p>
+    </div>
+
+    <div class="foot-col">
+      <h4>Product</h4>
+      <ul>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#science">Science</a></li>
+        <li><a href="https://apps.apple.com/app/id6759868402" target="_blank" rel="noopener noreferrer">Download</a></li>
+      </ul>
+    </div>
+
+    <div class="foot-col">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="/privacy">Privacy</a></li>
+        <li><a href="/terms">Terms</a></li>
+        <li><a href="/support">Support</a></li>
+      </ul>
+    </div>
+
+    <div class="foot-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="mailto:support@liftiqsolutions.app">support@liftiqsolutions.app</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="foot-bottom">
+    <span>© 2026 LiftIQ Solutions. All rights reserved.</span>
+    <div class="lang-toggle" role="group" aria-label="Language">
+      <a href="/" class="active">EN</a>
+      <a href="/es/">ES</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

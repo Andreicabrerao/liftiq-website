@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms of Service — LiftIQ</title>
+  <meta name="description" content="LiftIQ Terms of Service — the rules and guidelines for using the LiftIQ app." />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg:      #0a0a0a;
+      --surface: #141414;
+      --border:  #1f1f1f;
+      --text:    #f0f0f0;
+      --muted:   #6b6b6b;
+      --accent:  #f97316;
+      --accent2: #ea580c;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    header {
+      background: rgba(10,10,10,0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-mark {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+      box-shadow: 0 0 20px rgba(249,115,22,0.3);
+    }
+
+    .brand {
+      font-size: 18px;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--accent), #fb923c);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.3px;
+    }
+
+    .header-right {
+      margin-left: auto;
+      font-size: 12px;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .lang-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 2px;
+      font-size: 12px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 3px;
+    }
+    .lang-toggle a {
+      padding: 3px 9px;
+      border-radius: 999px;
+      color: var(--muted);
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .lang-toggle a.active {
+      background: var(--surface);
+      color: var(--text);
+    }
+    .lang-toggle a:hover { color: var(--text); }
+
+    .page {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 56px 24px 96px;
+    }
+
+    .hero {
+      margin-bottom: 48px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(249,115,22,0.1);
+      border: 1px solid rgba(249,115,22,0.2);
+      border-radius: 20px;
+      padding: 4px 12px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 20px;
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-size: clamp(28px, 5vw, 40px);
+      font-weight: 800;
+      letter-spacing: -0.8px;
+      line-height: 1.15;
+      margin-bottom: 16px;
+      color: var(--text);
+    }
+
+    .hero p {
+      font-size: 16px;
+      color: var(--muted);
+      max-width: 560px;
+    }
+
+    section {
+      margin-bottom: 48px;
+    }
+
+    h2 {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    h2::before {
+      content: '';
+      display: block;
+      width: 3px;
+      height: 20px;
+      background: linear-gradient(180deg, var(--accent), var(--accent2));
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+
+    p {
+      color: #a0a0a0;
+      margin-bottom: 12px;
+    }
+
+    ul {
+      color: #a0a0a0;
+      padding-left: 20px;
+      margin-bottom: 12px;
+    }
+
+    ul li {
+      margin-bottom: 8px;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 16px;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 24px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    footer a {
+      color: var(--muted);
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="/" style="display:flex;align-items:center;gap:12px;text-decoration:none;">
+    <div class="logo-mark" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18">
+        <path d="M6 8v8"/><path d="M18 8v8"/><path d="M3 10v4"/><path d="M21 10v4"/><path d="M6 12h12"/>
+      </svg>
+    </div>
+    <span class="brand">LiftIQ</span>
+  </a>
+  <div class="header-right">
+    <span>Terms of Service</span>
+    <div class="lang-toggle" role="group" aria-label="Language">
+      <a href="/terms" class="active">EN</a>
+      <a href="/es/terms">ES</a>
+    </div>
+  </div>
+</header>
+
+<div class="page">
+  <div class="hero">
+    <div class="badge">📋 Legal</div>
+    <h1>Terms of Service</h1>
+    <p>Please read these terms carefully before using LiftIQ. By downloading or using the app, you agree to be bound by these terms.</p>
+  </div>
+
+  <section>
+    <h2>1. Acceptance of Terms</h2>
+    <p>By accessing or using LiftIQ ("the App"), operated by LiftIQ Solutions ("we," "us," or "our"), you agree to these Terms of Service. If you do not agree, do not use the App.</p>
+    <p>We may update these terms from time to time. Continued use of the App after changes constitutes acceptance of the new terms.</p>
+  </section>
+
+  <section>
+    <h2>2. Use of the App</h2>
+    <p>LiftIQ is a fitness and nutrition tracking application. You agree to use it only for lawful purposes and in accordance with these Terms.</p>
+    <p>You must be at least 13 years old to use LiftIQ. By using the App, you represent that you meet this requirement.</p>
+    <p>You agree not to:</p>
+    <ul>
+      <li>Reverse engineer, decompile, or disassemble any part of the App</li>
+      <li>Use the App to transmit harmful, offensive, or unlawful content</li>
+      <li>Attempt to gain unauthorized access to any part of the App or its infrastructure</li>
+      <li>Use the App in any way that could impair its performance or interfere with other users</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>3. Health &amp; Medical Disclaimer</h2>
+    <div class="card">
+      <p style="color:var(--text);font-weight:600;margin-bottom:8px;">⚠️ Important — Please Read</p>
+      <p>LiftIQ provides general fitness and nutrition information for educational purposes only. The content in this App — including workout plans, macro targets, AI Coach responses, and calorie recommendations — is <strong>not a substitute for professional medical advice, diagnosis, or treatment.</strong></p>
+      <p>Always consult a qualified healthcare professional before starting any new exercise program or making significant changes to your diet, especially if you have any pre-existing health conditions.</p>
+    </div>
+    <p>We are not liable for any injury, illness, or adverse outcome resulting from use of the App or reliance on its content.</p>
+  </section>
+
+  <section>
+    <h2>4. Subscriptions &amp; Payments</h2>
+    <p>LiftIQ offers optional paid subscriptions that unlock premium features. Subscriptions are managed through Apple App Store or Google Play and are subject to their respective terms.</p>
+    <ul>
+      <li>Payment will be charged to your Apple ID account at confirmation of purchase</li>
+      <li>Subscription automatically renews unless auto-renew is turned off at least 24 hours before the end of the current period</li>
+      <li>Account will be charged for renewal within 24 hours prior to the end of the current period</li>
+      <li>Any unused portion of a free trial period will be forfeited when purchasing a subscription</li>
+      <li>You may manage subscriptions and turn off auto-renewal in your device's Account Settings</li>
+      <li>Deleting the App or your account does not cancel an active subscription — you must cancel through your device settings</li>
+      <li>Refunds are handled according to Apple App Store or Google Play policies</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>5. User Accounts</h2>
+    <p>You are responsible for maintaining the security of your account and all activity that occurs under it. Notify us immediately at <a href="mailto:support@liftiqsolutions.app">support@liftiqsolutions.app</a> if you suspect unauthorized access.</p>
+    <p>We reserve the right to suspend or terminate accounts that violate these Terms.</p>
+  </section>
+
+  <section>
+    <h2>6. Intellectual Property</h2>
+    <p>All content, trademarks, and intellectual property in LiftIQ are owned by LiftIQ Solutions or its licensors. You may not copy, modify, distribute, or create derivative works without our express written permission.</p>
+  </section>
+
+  <section>
+    <h2>7. Privacy</h2>
+    <p>Your use of LiftIQ is also governed by our <a href="/privacy">Privacy Policy</a>, which is incorporated into these Terms by reference.</p>
+  </section>
+
+  <section>
+    <h2>8. Disclaimer of Warranties</h2>
+    <p>The App is provided "as is" and "as available" without warranties of any kind, express or implied. We do not warrant that the App will be uninterrupted, error-free, or free of viruses or other harmful components.</p>
+  </section>
+
+  <section>
+    <h2>9. Limitation of Liability</h2>
+    <p>To the maximum extent permitted by law, LiftIQ Solutions shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising out of your use of, or inability to use, the App.</p>
+  </section>
+
+  <section>
+    <h2>10. Governing Law</h2>
+    <p>These Terms are governed by the laws of the State of Florida, United States, without regard to its conflict of law provisions.</p>
+  </section>
+
+  <section>
+    <h2>11. Contact</h2>
+    <p>Questions about these Terms? Contact us at <a href="mailto:support@liftiqsolutions.app">support@liftiqsolutions.app</a>.</p>
+  </section>
+</div>
+
+<footer>
+  <p>© 2026 LiftIQ Solutions. All rights reserved. &nbsp;·&nbsp;
+    <a href="/privacy">Privacy Policy</a> &nbsp;·&nbsp;
+    <a href="/terms">Terms of Service</a> &nbsp;·&nbsp;
+    <a href="/support">Support</a>
+  </p>
+  <p style="margin-top:8px;">Last updated: March 1, 2026</p>
+</footer>
+
+</body>
+</html>

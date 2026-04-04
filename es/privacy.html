@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Política de Privacidad — LiftIQ</title>
+  <meta name="description" content="Política de Privacidad de LiftIQ — cómo recopilamos, usamos y protegemos tus datos." />
+  <link rel="alternate" hreflang="en" href="https://liftiqsolutions.app/privacy" />
+  <link rel="alternate" hreflang="es" href="https://liftiqsolutions.app/es/privacy" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #0a0a0a; --surface: #141414; --border: #1f1f1f;
+      --text: #f0f0f0; --muted: #6b6b6b; --accent: #f97316; --accent2: #ea580c;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg); color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+      font-size: 16px; line-height: 1.7; -webkit-font-smoothing: antialiased;
+    }
+    header {
+      background: rgba(10,10,10,0.92);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      position: sticky; top: 0; z-index: 10;
+      padding: 16px 24px; display: flex; align-items: center; gap: 12px;
+    }
+    .logo-mark {
+      width: 36px; height: 36px; border-radius: 10px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; box-shadow: 0 0 20px rgba(249,115,22,0.3);
+    }
+    .brand {
+      font-size: 18px; font-weight: 800;
+      background: linear-gradient(135deg, var(--accent), #fb923c);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text; letter-spacing: -0.3px;
+    }
+    .header-right {
+      margin-left: auto; font-size: 12px; color: var(--muted);
+      display: flex; align-items: center; gap: 14px;
+    }
+    .lang-toggle {
+      display: inline-flex; align-items: center; gap: 2px;
+      font-size: 12px; border: 1px solid var(--border);
+      border-radius: 999px; padding: 3px;
+    }
+    .lang-toggle a {
+      padding: 3px 9px; border-radius: 999px;
+      color: var(--muted); font-weight: 600; text-decoration: none;
+    }
+    .lang-toggle a.active { background: var(--surface); color: var(--text); }
+    .lang-toggle a:hover { color: var(--text); }
+
+    .page { max-width: 720px; margin: 0 auto; padding: 56px 24px 96px; }
+    .hero { margin-bottom: 48px; padding-bottom: 40px; border-bottom: 1px solid var(--border); }
+    .badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(249,115,22,0.1); border: 1px solid rgba(249,115,22,0.2);
+      border-radius: 20px; padding: 4px 12px;
+      font-size: 12px; font-weight: 600; color: var(--accent);
+      margin-bottom: 20px; letter-spacing: 0.3px; text-transform: uppercase;
+    }
+    h1 {
+      font-size: clamp(28px, 5vw, 40px); font-weight: 800;
+      letter-spacing: -0.8px; line-height: 1.15; margin-bottom: 16px;
+    }
+    .hero p { font-size: 16px; color: var(--muted); max-width: 560px; }
+    section { margin-bottom: 48px; }
+    h2 {
+      font-size: 20px; font-weight: 700; margin-bottom: 16px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    h2::before {
+      content: ''; display: block; width: 3px; height: 20px;
+      background: linear-gradient(180deg, var(--accent), var(--accent2));
+      border-radius: 2px; flex-shrink: 0;
+    }
+    h3 {
+      font-size: 15px; font-weight: 600; color: #c0c0c0;
+      margin: 20px 0 8px; text-transform: uppercase; letter-spacing: 0.5px;
+    }
+    p { color: #a0a0a0; margin-bottom: 12px; }
+    p:last-child { margin-bottom: 0; }
+    ul { list-style: none; display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px; }
+    ul li { color: #a0a0a0; padding-left: 20px; position: relative; }
+    ul li::before { content: '–'; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
+
+    .table-wrap { overflow-x: auto; border-radius: 14px; border: 1px solid var(--border); }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    thead tr { background: var(--surface); border-bottom: 1px solid var(--border); }
+    th { padding: 12px 16px; text-align: left; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px; color: var(--muted); }
+    td { padding: 12px 16px; color: #a0a0a0; border-bottom: 1px solid var(--border); vertical-align: top; }
+    tbody tr:last-child td { border-bottom: none; }
+    td:first-child { font-weight: 600; color: var(--text); white-space: nowrap; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .callout {
+      background: var(--surface); border: 1px solid var(--border);
+      border-left: 3px solid var(--accent); border-radius: 0 12px 12px 0;
+      padding: 16px 18px; font-size: 14px; color: #a0a0a0; margin: 16px 0;
+    }
+
+    .contact-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 16px; padding: 24px;
+      display: flex; flex-direction: column; gap: 8px;
+    }
+    .contact-card .label {
+      font-size: 11px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.6px; color: var(--muted);
+    }
+    .contact-card a { font-size: 17px; font-weight: 600; }
+
+    footer {
+      margin-top: 64px; padding-top: 32px;
+      border-top: 1px solid var(--border);
+      display: flex; flex-wrap: wrap; gap: 12px;
+      align-items: center; justify-content: space-between;
+      font-size: 12px; color: var(--muted);
+    }
+    footer a { color: var(--muted); }
+    footer a:hover { color: var(--accent); text-decoration: none; }
+
+    @media (max-width: 600px) {
+      .page { padding: 40px 20px 80px; }
+      h2 { font-size: 18px; }
+      footer { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="/es/" style="display:flex;align-items:center;gap:12px;text-decoration:none;">
+    <div class="logo-mark" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18">
+        <path d="M6 8v8"/><path d="M18 8v8"/><path d="M3 10v4"/><path d="M21 10v4"/><path d="M6 12h12"/>
+      </svg>
+    </div>
+    <span class="brand">LiftIQ</span>
+  </a>
+  <div class="header-right">
+    <span>Política de Privacidad</span>
+    <div class="lang-toggle" role="group" aria-label="Idioma">
+      <a href="/privacy">EN</a>
+      <a href="/es/privacy" class="active">ES</a>
+    </div>
+  </div>
+</header>
+
+<div class="page">
+
+  <div class="hero">
+    <div class="badge">📄 Legal</div>
+    <h1>Política de Privacidad</h1>
+    <p>LiftIQ se basa en el principio de que tus datos de entrenamiento te pertenecen. Esta política explica qué recopilamos, por qué lo recopilamos y cómo puedes controlarlo o eliminarlo.</p>
+  </div>
+
+  <p style="color: var(--muted); font-size: 13px; margin-bottom: 48px;">
+    <strong style="color: #606060;">Última actualización:</strong> 1 de marzo de 2026
+  </p>
+
+  <section>
+    <h2>Información que recopilamos</h2>
+
+    <h3>Información de la cuenta</h3>
+    <p>Al crear una cuenta recopilamos tu correo electrónico y contraseña (almacenada de forma segura mediante Supabase Auth, nunca en texto plano). Si inicias sesión con Apple o Google solo recibimos un identificador único y, opcionalmente, tu nombre — sin contraseñas.</p>
+
+    <h3>Información del perfil</h3>
+    <p>Información que proporcionas voluntariamente: nombre, foto de perfil, fecha de nacimiento, sexo biológico, altura, peso, objetivos, nivel de actividad, preferencias dietéticas y de entrenamiento. Todo esto se usa para personalizar tu experiencia.</p>
+
+    <h3>Datos de fitness y salud</h3>
+    <ul>
+      <li>Sesiones de entrenamiento, series, repeticiones y pesos que registras en la app</li>
+      <li>Mediciones de peso corporal</li>
+      <li>Pasos diarios (leídos desde los sensores de movimiento de tu dispositivo)</li>
+      <li>Registros de nutrición: comidas, calorías y macronutrientes</li>
+      <li>Con tu permiso explícito: leemos <strong>energía activa</strong> y <strong>pasos</strong> desde Apple Health, y registramos entrenamientos y peso corporal de vuelta en Apple Health</li>
+    </ul>
+
+    <h3>Fotos de comida</h3>
+    <p>Las fotos de comida que envías para análisis nutricional se envían a nuestro socio de procesamiento con IA (Groq, Inc.) para su reconocimiento. Las imágenes se procesan en tiempo real y no se almacenan permanentemente en nuestros servidores. El procesamiento se rige por las políticas de Groq.</p>
+
+    <h3>Mensajes del Coach IA</h3>
+    <p>Los mensajes de texto libre que envías al Coach IA se reenvían a <strong>Groq, Inc.</strong> para procesarlos. Enviamos tu historial reciente de conversación (hasta 20 mensajes) como contexto. Guardamos un contador diario en nuestros servidores para aplicar límites de uso justos.</p>
+
+    <div class="callout">
+      ⚠️ Evita compartir información médica o financiera sensible en los mensajes al Coach IA.
+    </div>
+
+    <h3>Analíticas y uso</h3>
+    <p>Datos de eventos anonimizados (p. ej. "entrenamiento completado", "comida registrada") para entender cómo se usa la app y mejorarla. No se asocian datos personales identificables a los eventos.</p>
+  </section>
+
+  <section>
+    <h2>Cómo usamos tu información</h2>
+    <ul>
+      <li>Para operar la app y sus funciones</li>
+      <li>Para personalizar tus planes de entrenamiento, macros y coaching</li>
+      <li>Para sincronizar datos con Apple Health (solo iOS, con tu permiso)</li>
+      <li>Para procesar pagos de suscripción mediante RevenueCat y Apple / Google</li>
+      <li>Para aplicar límites de uso razonables en funciones de IA</li>
+      <li>Para investigar y corregir errores y fallos (vía Sentry)</li>
+      <li>Para comunicarnos contigo sobre tu cuenta o cambios importantes</li>
+    </ul>
+    <div class="callout">
+      🔒 No vendemos tus datos personales a terceros. Punto.
+    </div>
+  </section>
+
+  <section>
+    <h2>Servicios de terceros</h2>
+    <p>Usamos los siguientes servicios para operar la app. Cada uno tiene su propia política de privacidad.</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Servicio</th>
+            <th>Propósito</th>
+            <th>Política</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Supabase</td>
+            <td>Base de datos, autenticación y almacenamiento</td>
+            <td><a href="https://supabase.com/privacy" target="_blank" rel="noopener noreferrer">supabase.com/privacy</a></td>
+          </tr>
+          <tr>
+            <td>RevenueCat</td>
+            <td>Gestión de suscripciones y facturación</td>
+            <td><a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener noreferrer">revenuecat.com/privacy</a></td>
+          </tr>
+          <tr>
+            <td>Groq, Inc.</td>
+            <td>Procesamiento de mensajes del Coach IA (Llama 3.3)</td>
+            <td><a href="https://groq.com/privacy" target="_blank" rel="noopener noreferrer">groq.com/privacy</a></td>
+          </tr>
+          <tr>
+            <td>Sentry</td>
+            <td>Reporte de fallos y monitoreo de errores</td>
+            <td><a href="https://sentry.io/privacy/" target="_blank" rel="noopener noreferrer">sentry.io/privacy</a></td>
+          </tr>
+          <tr>
+            <td>Apple Health</td>
+            <td>Lectura/escritura de datos de fitness (iOS, opcional)</td>
+            <td><a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener noreferrer">apple.com/legal/privacy</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>Coaching con IA</h2>
+    <p>El Coach IA de LiftIQ usa inteligencia artificial para ofrecer orientación personalizada. Al usarlo, tus mensajes y datos relevantes del perfil (objetivos, rutina, condiciones de salud que hayas compartido) se envían a Groq, Inc. para generar respuestas. Estos datos se usan únicamente para generar tu respuesta y Groq no los almacena más allá de la duración de la solicitud.</p>
+    <p>El Coach IA está impulsado por el modelo Llama de Meta, operado a través de Groq. Al usar esta función aceptas que tus mensajes se procesen con este servicio de terceros. Puedes dejar de usar el Coach IA en cualquier momento.</p>
+    <p>No vendemos tus datos a proveedores de IA ni los usamos para entrenar modelos.</p>
+  </section>
+
+  <section>
+    <h2>Retención de datos</h2>
+    <ul>
+      <li><strong>Datos de la cuenta:</strong> se conservan hasta que elimines tu cuenta</li>
+      <li><strong>Entrenamientos y nutrición:</strong> se conservan hasta que elimines la cuenta</li>
+      <li><strong>Mensajes del Coach IA:</strong> almacenados en nuestra base de datos, se borran al eliminar la cuenta</li>
+      <li><strong>Fotos de comida:</strong> procesadas en tiempo real, no se almacenan permanentemente</li>
+      <li><strong>Reportes de fallos (Sentry):</strong> retenidos hasta 90 días</li>
+      <li><strong>Eventos de analítica:</strong> retenidos hasta que elimines la cuenta</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Seguridad</h2>
+    <p>Usamos medidas estándar de la industria para proteger tus datos:</p>
+    <ul>
+      <li>Cifrado TLS para todos los datos en tránsito</li>
+      <li>Seguridad a nivel de fila en todas las tablas — cada usuario solo accede a sus propios datos</li>
+      <li>Las contraseñas se guardan con hash, nunca en texto plano</li>
+      <li>Las fotos de perfil se almacenan en buckets privados de Supabase Storage</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Privacidad de menores</h2>
+    <p>La app no está dirigida a menores de 13 años. No recopilamos deliberadamente información personal de menores de 13. Si crees que un menor nos ha enviado información personal, contáctanos y la eliminaremos.</p>
+  </section>
+
+  <section>
+    <h2>Eliminación de la cuenta</h2>
+    <p>Al eliminar tu cuenta (desde <strong>Perfil → Eliminar cuenta</strong>), se borra permanentemente: tu perfil, historial de entrenamientos, nutrición, mediciones, historial del Coach IA, récords personales y planes. Los reportes de fallos (Sentry) pueden conservarse hasta 90 días. Las suscripciones activas se cancelan por separado desde los ajustes de suscripciones del dispositivo.</p>
+  </section>
+
+  <section>
+    <h2>Tus derechos</h2>
+    <p>Según tu ubicación puedes tener derecho a:</p>
+    <ul>
+      <li><strong>Acceder</strong> a los datos personales que tenemos de ti</li>
+      <li><strong>Corregir</strong> datos inexactos</li>
+      <li><strong>Eliminar</strong> tus datos — usa la opción Eliminar Cuenta en la app</li>
+      <li><strong>Exportar</strong> tus datos — contáctanos</li>
+      <li><strong>Excluirte</strong> de la analítica — contáctanos</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Derechos bajo CCPA (California)</h2>
+    <p>Si resides en California, la Ley de Privacidad del Consumidor de California (CCPA) te otorga derechos específicos sobre tu información personal.</p>
+    <h3>Categorías de información personal recopilada</h3>
+    <ul>
+      <li><strong>Identificadores:</strong> correo electrónico, nombre, ID de usuario</li>
+      <li><strong>Salud y fitness:</strong> peso, altura, medidas corporales, sexo biológico, fecha de nacimiento, condiciones de salud, nivel de actividad</li>
+      <li><strong>Nutrición:</strong> registros de comidas, fotos de comida, objetivos de macros, preferencias dietéticas</li>
+      <li><strong>Fitness:</strong> entrenamientos, series/reps/pesos, récords, planes, pasos</li>
+      <li><strong>Dispositivo:</strong> modelo, versión del SO, reportes de fallos, datos de rendimiento</li>
+      <li><strong>IA:</strong> mensajes al Coach IA</li>
+    </ul>
+    <div class="callout">🔒 <strong>No</strong> vendemos tu información personal.</div>
+    <h3>Tus derechos CCPA</h3>
+    <ul>
+      <li><strong>Derecho a saber:</strong> qué información personal recopilamos, usamos y compartimos</li>
+      <li><strong>Derecho a eliminar:</strong> puedes pedir la eliminación de tu información</li>
+      <li><strong>Derecho a no ser discriminado:</strong> no te trataremos distinto por ejercer estos derechos</li>
+    </ul>
+    <p>Para ejercer estos derechos, escribe a <a href="mailto:support@liftiqsolutions.app">support@liftiqsolutions.app</a>. Responderemos dentro de 45 días.</p>
+  </section>
+
+  <section>
+    <h2>Usuarios en el Espacio Económico Europeo (RGPD)</h2>
+    <p>Si te encuentras en el EEE, el Reglamento General de Protección de Datos (RGPD) te otorga derechos adicionales.</p>
+    <h3>Base legal del tratamiento</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Actividad</th><th>Base legal</th></tr></thead>
+        <tbody>
+          <tr><td>Creación de cuenta y funcionamiento</td><td>Contrato (Art. 6(1)(b))</td></tr>
+          <tr><td>Datos de salud</td><td>Consentimiento explícito (Art. 9(2)(a))</td></tr>
+          <tr><td>Analítica y reportes de fallos</td><td>Intereses legítimos (Art. 6(1)(f))</td></tr>
+          <tr><td>Comunicaciones de marketing</td><td>Consentimiento (Art. 6(1)(a))</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Los datos de salud (peso, medidas, sexo biológico, etc.) se clasifican como <strong>datos de categoría especial</strong> bajo el Art. 9 del RGPD y solo se tratan con tu consentimiento explícito.</p>
+    <h3>Transferencias internacionales</h3>
+    <p>Tus datos se procesan en Estados Unidos. Usamos Cláusulas Contractuales Tipo (CCT) como mecanismo legal para la transferencia desde el EEE a EE. UU.</p>
+    <h3>Tus derechos adicionales RGPD</h3>
+    <ul>
+      <li><strong>Derecho a la portabilidad de datos</strong></li>
+      <li><strong>Derecho a restringir el tratamiento</strong></li>
+      <li><strong>Derecho a retirar el consentimiento</strong> en cualquier momento</li>
+      <li><strong>Derecho a presentar una reclamación</strong> ante tu autoridad supervisora local</li>
+    </ul>
+    <p>Contacto de protección de datos: <a href="mailto:support@liftiqsolutions.app">support@liftiqsolutions.app</a></p>
+  </section>
+
+  <section>
+    <h2>Cambios a esta política</h2>
+    <p>Podemos actualizar esta política. Te avisaremos de cambios significativos actualizando la fecha de "Última actualización" y, cuando corresponda, mediante un aviso dentro de la app.</p>
+  </section>
+
+  <section>
+    <h2>Contacto</h2>
+    <p>¿Preguntas sobre esta política o tus datos? Escríbenos:</p>
+    <div class="contact-card">
+      <span class="label">Correo</span>
+      <a href="mailto:support@liftiqsolutions.app">support@liftiqsolutions.app</a>
+    </div>
+  </section>
+
+  <footer>
+    <span>© 2026 LiftIQ Solutions. Todos los derechos reservados.</span>
+    <span>
+      <a href="/es/">Inicio</a> · <a href="/es/terms">Términos</a> · <a href="/es/support">Soporte</a>
+    </span>
+  </footer>
+
+</div>
+</body>
+</html>

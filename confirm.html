@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LiftIQ — You're in!</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #0a0a0a;
+      color: #f5f5f5;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 32px 24px;
+      text-align: center;
+    }
+
+    .logo-ring {
+      width: 80px;
+      height: 80px;
+      border-radius: 24px;
+      background: linear-gradient(135deg, #f97316, #ea580c);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+      box-shadow: 0 0 40px rgba(249,115,22,0.35);
+      font-size: 38px;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 40px rgba(249,115,22,0.35); }
+      50%       { box-shadow: 0 0 60px rgba(249,115,22,0.55); }
+    }
+
+    .app-name {
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+      background: linear-gradient(135deg, #f97316, #fb923c);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .tagline {
+      font-size: 16px;
+      color: #a3a3a3;
+      line-height: 1.5;
+      max-width: 280px;
+      margin: 0 auto 40px;
+    }
+
+    .tagline strong {
+      color: #f5f5f5;
+      font-weight: 600;
+    }
+
+    .card {
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      border-radius: 20px;
+      padding: 28px 24px;
+      width: 100%;
+      max-width: 360px;
+      margin-bottom: 24px;
+    }
+
+    .status {
+      font-size: 13px;
+      color: #a3a3a3;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #22c55e;
+      animation: blink 1.2s ease-in-out infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.3; }
+    }
+
+    .heading {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .sub {
+      font-size: 14px;
+      color: #737373;
+      line-height: 1.5;
+    }
+
+    .btn-open {
+      display: block;
+      width: 100%;
+      max-width: 360px;
+      background: linear-gradient(135deg, #f97316, #ea580c);
+      color: white;
+      font-size: 16px;
+      font-weight: 700;
+      padding: 16px;
+      border-radius: 14px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      margin-bottom: 14px;
+      transition: opacity 0.15s;
+    }
+
+    .btn-open:hover { opacity: 0.88; }
+
+    .btn-store {
+      display: block;
+      width: 100%;
+      max-width: 360px;
+      background: transparent;
+      color: #a3a3a3;
+      font-size: 14px;
+      padding: 14px;
+      border-radius: 14px;
+      border: 1px solid #2a2a2a;
+      cursor: pointer;
+      text-decoration: none;
+      transition: border-color 0.15s, color 0.15s;
+    }
+
+    .btn-store:hover { border-color: #f97316; color: #f97316; }
+
+    .footer {
+      margin-top: 48px;
+      font-size: 12px;
+      color: #404040;
+    }
+
+    /* Recovery / password-reset variant */
+    .recovery-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(249,115,22,0.12);
+      border: 1px solid rgba(249,115,22,0.25);
+      border-radius: 20px;
+      padding: 4px 12px;
+      font-size: 12px;
+      color: #f97316;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="logo-ring">🏋️</div>
+  <div class="app-name">LiftIQ</div>
+  <p class="tagline" id="tagline">
+    You're ready to <strong>transform your life</strong>.<br/>
+    Let's get to work.
+  </p>
+
+  <div class="card">
+    <div class="status">
+      <div class="status-dot"></div>
+      <span id="status-text">Opening LiftIQ…</span>
+    </div>
+    <div class="heading" id="card-heading">✅ You're confirmed!</div>
+    <p class="sub" id="card-sub">
+      Your account is verified. Tap below if the app doesn't open automatically.
+    </p>
+  </div>
+
+  <a class="btn-open" id="btn-open" href="#">Open LiftIQ</a>
+  <a class="btn-store" id="btn-store" href="https://apps.apple.com/app/id6759868402" target="_blank" rel="noopener noreferrer">
+    Download on the App Store
+  </a>
+
+  <div class="footer">© 2026 LiftIQ. All rights reserved.</div>
+
+  <script>
+    // ── Bilingual strings — swapped in if browser prefers Spanish ─────────────
+    const isES = (navigator.language || 'en').toLowerCase().startsWith('es')
+    if (isES) {
+      document.title = "LiftIQ — ¡Ya estás dentro!"
+      document.getElementById('tagline').innerHTML =
+        "Listo para <strong>transformar tu vida</strong>.<br/>Vamos al trabajo."
+      document.getElementById('status-text').textContent = 'Abriendo LiftIQ…'
+      document.getElementById('card-heading').textContent = '✅ ¡Cuenta confirmada!'
+      document.getElementById('card-sub').textContent =
+        'Tu cuenta está verificada. Toca abajo si la app no se abre sola.'
+      document.getElementById('btn-open').textContent = 'Abrir LiftIQ'
+      document.getElementById('btn-store').textContent = 'Descargar en App Store'
+    }
+
+    // ── Detect flow type from URL fragment / query ────────────────────────────
+    const hash   = window.location.hash.slice(1)   // strip #
+    const search = window.location.search.slice(1) // strip ?
+
+    // Prefer fragment (implicit flow), fall back to query (PKCE)
+    const params = new URLSearchParams(hash || search)
+
+    const type         = params.get('type')            // 'signup', 'recovery', 'magiclink'
+    const accessToken  = params.get('access_token')
+    const refreshToken = params.get('refresh_token')
+    const code         = params.get('code')
+    const error        = params.get('error')
+    const errorDesc    = params.get('error_description')
+
+    // ── Error state ───────────────────────────────────────────────────────────
+    if (error) {
+      document.getElementById('card-heading').textContent =
+        isES ? '⚠️ Enlace caducado' : '⚠️ Link expired'
+      document.getElementById('card-sub').textContent =
+        errorDesc || (isES
+          ? 'Este enlace caducó o ya fue utilizado. Solicita uno nuevo desde la app.'
+          : 'This link has expired or already been used. Please request a new one in the app.')
+      document.getElementById('status-text').textContent = isES ? 'Enlace no válido' : 'Link invalid'
+      document.querySelector('.status-dot').style.background = '#ef4444'
+      document.getElementById('btn-open').href = 'liftiq://'
+      document.getElementById('btn-open').textContent = isES ? 'Volver a LiftIQ' : 'Back to LiftIQ'
+    }
+
+    // ── Password reset flow ───────────────────────────────────────────────────
+    else if (type === 'recovery') {
+      const tagline = document.getElementById('tagline')
+      tagline.replaceChildren(
+        document.createTextNode(isES ? 'Restableciendo tu contraseña.' : 'Resetting your password.'),
+        document.createElement('br'),
+        Object.assign(document.createElement('strong'), { textContent: isES ? '¡Ya casi!' : 'Almost there!' }),
+      )
+      document.getElementById('card-heading').textContent =
+        isES ? '🔐 Restablecer contraseña' : '🔐 Reset your password'
+      document.getElementById('card-sub').textContent = isES
+        ? 'Toca abajo para abrir LiftIQ y elegir una nueva contraseña.'
+        : 'Tap below to open LiftIQ and choose your new password.'
+
+      const badge = document.createElement('div')
+      badge.className = 'recovery-badge'
+      badge.textContent = isES ? '🔑 Restablecer contraseña' : '🔑 Password Reset'
+      document.querySelector('.card').prepend(badge)
+    }
+
+    // ── Build the deep link ───────────────────────────────────────────────────
+    let deepLink
+    if (code) {
+      // PKCE flow — pass code through
+      deepLink = `liftiq://callback?code=${encodeURIComponent(code)}`
+      if (type) deepLink += `&type=${encodeURIComponent(type)}`
+    } else if (accessToken) {
+      // Implicit flow — pass full fragment
+      deepLink = `liftiq://callback#${hash || search}`
+    } else {
+      // Fallback — just open the app
+      deepLink = 'liftiq://'
+    }
+
+    document.getElementById('btn-open').href = deepLink
+
+    // ── Auto-redirect after short delay ──────────────────────────────────────
+    if (!error) {
+      setTimeout(() => {
+        window.location.href = deepLink
+      }, 1200)
+    }
+  </script>
+
+</body>
+</html>
