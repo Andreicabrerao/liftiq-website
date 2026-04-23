@@ -156,7 +156,7 @@
 
     .phone-frame {
       position: relative; width: 100%; max-width: 320px; margin: 0 auto;
-      aspect-ratio: 9 / 19.5; background: #000; border-radius: 44px;
+      background: #000; border-radius: 44px;
       padding: 12px; border: 2px solid #2a2a2a;
       box-shadow:
         0 0 0 1px rgba(249,115,22,0.18),
@@ -165,7 +165,7 @@
     }
     .phone-screen {
       position: relative;
-      width: 100%; height: 100%; border-radius: 32px;
+      width: 100%; aspect-ratio: 9 / 19.5; border-radius: 32px;
       background: linear-gradient(180deg, #141414, #0a0a0a);
       overflow: hidden;
       color: var(--dim); font-size: 13px;
@@ -554,19 +554,25 @@
     <div class="shots">
       <div class="shots-scroller" role="list">
         <figure class="shot" role="listitem">
-          <img src="/screenshots/screen-1.png" alt="Pantalla principal con la rutina de hoy, series listas y resumen de volumen semanal" onerror="this.style.display='none';this.parentNode.insertAdjacentHTML('beforeend','<div class=placeholder>Pantalla<br/>principal</div>');" />
+          <img src="/screenshots/screen-1.png" alt="Mi Plan con horario Empuje/Tirón/Piernas y rutina de hoy" onerror="this.style.display='none';this.parentNode.insertAdjacentHTML('beforeend','<div class=placeholder>Plan</div>');" />
         </figure>
         <figure class="shot" role="listitem">
-          <img src="/screenshots/screen-2.png" alt="Pantalla de entrenamiento activo con sugerencias de peso por serie y registro de RPE" onerror="this.style.display='none';this.parentNode.insertAdjacentHTML('beforeend','<div class=placeholder>Entrenamiento<br/>activo</div>');" />
+          <img src="/screenshots/screen-2.png" alt="Celebración de récord personal con trofeo y volumen total" onerror="this.style.display='none';this.parentNode.insertAdjacentHTML('beforeend','<div class=placeholder>Récord personal</div>');" />
         </figure>
         <figure class="shot" role="listitem">
-          <img src="/screenshots/screen-3.png" alt="Registro de nutrición con comidas escaneadas y desglose de macros" onerror="this.style.display='none';this.parentNode.insertAdjacentHTML('beforeend','<div class=placeholder>Nutrición</div>');" />
+          <img src="/screenshots/screen-3.png" alt="Análisis de foto de comida con IA estimando calorías y macros" onerror="this.style.display='none';this.parentNode.insertAdjacentHTML('beforeend','<div class=placeholder>Escaneo de comida</div>');" />
         </figure>
         <figure class="shot" role="listitem">
-          <img src="/screenshots/screen-4.png" alt="Vista de progreso con récords personales, rachas y proyecciones de 1RM" onerror="this.style.display='none';this.parentNode.insertAdjacentHTML('beforeend','<div class=placeholder>Progreso</div>');" />
+          <img src="/screenshots/screen-4.png" alt="Pestaña de nutrición con anillo de calorías diarias y desglose de macros" onerror="this.style.display='none';this.parentNode.insertAdjacentHTML('beforeend','<div class=placeholder>Nutrición</div>');" />
         </figure>
         <figure class="shot" role="listitem">
-          <img src="/screenshots/screen-5.png" alt="Chat con el coach IA respondiendo una pregunta sobre programación" onerror="this.style.display='none';this.parentNode.insertAdjacentHTML('beforeend','<div class=placeholder>Coach IA</div>');" />
+          <img src="/screenshots/screen-5.png" alt="Pestaña de progreso con puntaje de fuerza y volumen semanal" onerror="this.style.display='none';this.parentNode.insertAdjacentHTML('beforeend','<div class=placeholder>Progreso</div>');" />
+        </figure>
+        <figure class="shot" role="listitem">
+          <img src="/screenshots/ai-coach.png" alt="Chat del coach IA respondiendo sobre nutrición y recuperación" onerror="this.style.display='none';this.parentNode.insertAdjacentHTML('beforeend','<div class=placeholder>Coach IA</div>');" />
+        </figure>
+        <figure class="shot" role="listitem">
+          <img src="/screenshots/howToDo.png" alt="Videos demostrativos de ejercicios con indicaciones de técnica" onerror="this.style.display='none';this.parentNode.insertAdjacentHTML('beforeend','<div class=placeholder>Videos</div>');" />
         </figure>
       </div>
     </div>
