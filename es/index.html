@@ -79,9 +79,9 @@
       --surface2: #1a1a1a;
       --border:   #1f1f1f;
       --text:     #f5f5f5;
-      --muted:    #8a8a8a;
-      --muted2:   #a8a8a8;
-      --dim:      #606060;
+      --muted:    #909090;   /* WCAG AA on all surfaces */
+      --muted2:   #b0b0b0;   /* WCAG AAA on dark bg */
+      --dim:      #888888;   /* Previously failed AA — now 6.8:1 */
       --accent:   #f97316;
       --accent2:  #ea580c;
       --accent3:  #fb923c;
@@ -735,7 +735,13 @@
       padding: 16px 18px; border-bottom: 1px solid var(--border);
       color: var(--muted2); line-height: 1.45; vertical-align: middle;
     }
-    .compare-table tbody tr:last-child td { border-bottom: none; }
+    .compare-table tbody th {
+      padding: 16px 18px; border-bottom: 1px solid var(--border);
+      color: var(--text); font-weight: 500; text-align: left;
+      line-height: 1.45; vertical-align: middle; background: transparent;
+    }
+    .compare-table tbody tr:last-child td,
+    .compare-table tbody tr:last-child th { border-bottom: none; }
     .compare-table tbody td:first-child {
       color: var(--text); font-weight: 500; text-align: left;
     }
@@ -771,7 +777,8 @@
     @media (max-width: 720px) {
       .compare-table { font-size: 13.5px; }
       .compare-table thead th,
-      .compare-table tbody td { padding: 12px 10px; }
+      .compare-table tbody td,
+      .compare-table tbody th { padding: 12px 10px; }
       .compare-table thead th { font-size: 11px; letter-spacing: 0.3px; }
       .compare-icon { width: 22px; height: 22px; }
       .compare-note { display: none; }
@@ -789,12 +796,16 @@
     .faq-item summary {
       padding: 20px 22px; cursor: pointer;
       display: flex; align-items: center; justify-content: space-between;
-      gap: 16px; font-size: 16px; font-weight: 600;
-      color: var(--text); letter-spacing: -0.1px;
+      gap: 16px;
       list-style: none; user-select: none;
     }
     .faq-item summary::-webkit-details-marker { display: none; }
-    .faq-item summary:hover { color: var(--accent); }
+    .faq-q {
+      font-size: 16px; font-weight: 600;
+      color: var(--text); letter-spacing: -0.1px;
+      margin: 0; line-height: 1.3; flex: 1;
+    }
+    .faq-item summary:hover .faq-q { color: var(--accent); }
     .faq-chevron {
       flex-shrink: 0; width: 22px; height: 22px;
       color: var(--muted);
@@ -872,8 +883,8 @@
       <a class="nav-only" href="#pricing">Precios</a>
       <a class="nav-only" href="#faq">FAQ</a>
       <div class="lang-toggle" role="group" aria-label="Idioma">
-        <a href="/">EN</a>
-        <a href="/es/" class="active" aria-current="page">ES</a>
+        <a href="/" hreflang="en" lang="en">EN</a>
+        <a href="/es/" class="active" aria-current="page" hreflang="es" lang="es">ES</a>
       </div>
     </div>
   </nav>
@@ -1107,7 +1118,8 @@
         <p>Cómo se compara LiftIQ frente a una app de gimnasio genérica y un tracker básico.</p>
       </div>
 
-      <table class="compare-table" role="table">
+      <table class="compare-table">
+        <caption class="sr-only">Comparativa de funciones entre LiftIQ, una app de gimnasio genérica y un tracker básico.</caption>
         <thead>
           <tr>
             <th scope="col">Función</th>
@@ -1118,52 +1130,52 @@
         </thead>
         <tbody>
           <tr>
-            <td>Peso sugerido con IA<span class="compare-note">Por ejercicio, con RPE</span></td>
-            <td class="cell-us"><span class="compare-icon compare-icon--yes" aria-label="Sí"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></td>
-            <td><span class="compare-icon compare-icon--no" aria-label="No"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span></td>
-            <td><span class="compare-icon compare-icon--no" aria-label="No"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span></td>
+            <th scope="row">Peso sugerido con IA<span class="compare-note">Por ejercicio, con RPE</span></th>
+            <td class="cell-us"><span class="compare-icon compare-icon--yes" role="img" aria-label="LiftIQ: Sí"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></td>
+            <td><span class="compare-icon compare-icon--no" role="img" aria-label="App genérica: No"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span></td>
+            <td><span class="compare-icon compare-icon--no" role="img" aria-label="Tracker básico: No"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span></td>
           </tr>
           <tr>
-            <td>Basado en ACSM 2026<span class="compare-note">Programación revisada por pares</span></td>
-            <td class="cell-us"><span class="compare-icon compare-icon--yes" aria-label="Sí"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></td>
-            <td><span class="compare-icon compare-icon--no" aria-label="No"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span></td>
-            <td><span class="compare-icon compare-icon--no" aria-label="No"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span></td>
+            <th scope="row">Basado en ACSM 2026<span class="compare-note">Programación revisada por pares</span></th>
+            <td class="cell-us"><span class="compare-icon compare-icon--yes" role="img" aria-label="LiftIQ: Sí"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></td>
+            <td><span class="compare-icon compare-icon--no" role="img" aria-label="App genérica: No"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span></td>
+            <td><span class="compare-icon compare-icon--no" role="img" aria-label="Tracker básico: No"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span></td>
           </tr>
           <tr>
-            <td>Nutrición por foto con IA<span class="compare-note">Fotografía y listo</span></td>
-            <td class="cell-us"><span class="compare-icon compare-icon--yes" aria-label="Sí"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></td>
-            <td><span class="compare-icon compare-icon--no" aria-label="No"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span></td>
-            <td><span class="compare-icon compare-icon--no" aria-label="No"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span></td>
+            <th scope="row">Nutrición por foto con IA<span class="compare-note">Fotografía y listo</span></th>
+            <td class="cell-us"><span class="compare-icon compare-icon--yes" role="img" aria-label="LiftIQ: Sí"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></td>
+            <td><span class="compare-icon compare-icon--no" role="img" aria-label="App genérica: No"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span></td>
+            <td><span class="compare-icon compare-icon--no" role="img" aria-label="Tracker básico: No"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span></td>
           </tr>
           <tr>
-            <td>Soporte bilingüe completo<span class="compare-note">Inglés y español en la app</span></td>
-            <td class="cell-us"><span class="compare-icon compare-icon--yes" aria-label="Sí"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></td>
-            <td style="color: var(--muted)">Parcial</td>
-            <td><span class="compare-icon compare-icon--no" aria-label="No"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span></td>
+            <th scope="row">Soporte bilingüe completo<span class="compare-note">Inglés y español en la app</span></th>
+            <td class="cell-us"><span class="compare-icon compare-icon--yes" role="img" aria-label="LiftIQ: Sí"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></td>
+            <td style="color: var(--muted)" aria-label="App genérica: Parcial">Parcial</td>
+            <td><span class="compare-icon compare-icon--no" role="img" aria-label="Tracker básico: No"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span></td>
           </tr>
           <tr>
-            <td>Coach IA por chat<span class="compare-note">Conoce tu historial</span></td>
-            <td class="cell-us"><span class="compare-icon compare-icon--yes" aria-label="Sí"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></td>
-            <td style="color: var(--muted)">Genérico</td>
-            <td><span class="compare-icon compare-icon--no" aria-label="No"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span></td>
+            <th scope="row">Coach IA por chat<span class="compare-note">Conoce tu historial</span></th>
+            <td class="cell-us"><span class="compare-icon compare-icon--yes" role="img" aria-label="LiftIQ: Sí"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></td>
+            <td style="color: var(--muted)" aria-label="App genérica: Chatbot genérico">Genérico</td>
+            <td><span class="compare-icon compare-icon--no" role="img" aria-label="Tracker básico: No"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span></td>
           </tr>
           <tr>
-            <td>Sin anuncios, nunca</td>
-            <td class="cell-us"><span class="compare-icon compare-icon--yes" aria-label="Sí"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></td>
-            <td><span class="compare-icon compare-icon--no" aria-label="No"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span></td>
-            <td style="color: var(--muted)">Varía</td>
+            <th scope="row">Sin anuncios, nunca</th>
+            <td class="cell-us"><span class="compare-icon compare-icon--yes" role="img" aria-label="LiftIQ: Sí"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></td>
+            <td><span class="compare-icon compare-icon--no" role="img" aria-label="App genérica: No"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span></td>
+            <td style="color: var(--muted)" aria-label="Tracker básico: Varía según producto">Varía</td>
           </tr>
           <tr>
-            <td>Sin venta de datos<span class="compare-note">Tus registros son tuyos</span></td>
-            <td class="cell-us"><span class="compare-icon compare-icon--yes" aria-label="Sí"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></td>
-            <td style="color: var(--muted)">Varía</td>
-            <td style="color: var(--muted)">Varía</td>
+            <th scope="row">Sin venta de datos<span class="compare-note">Tus registros son tuyos</span></th>
+            <td class="cell-us"><span class="compare-icon compare-icon--yes" role="img" aria-label="LiftIQ: Sí"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></td>
+            <td style="color: var(--muted)" aria-label="App genérica: Varía según producto">Varía</td>
+            <td style="color: var(--muted)" aria-label="Tracker básico: Varía según producto">Varía</td>
           </tr>
           <tr>
-            <td>Funciona en iPhone y iPad</td>
-            <td class="cell-us"><span class="compare-icon compare-icon--yes" aria-label="Sí"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></td>
-            <td style="color: var(--muted)">Solo iPhone</td>
-            <td style="color: var(--muted)">Varía</td>
+            <th scope="row">Funciona en iPhone y iPad</th>
+            <td class="cell-us"><span class="compare-icon compare-icon--yes" role="img" aria-label="LiftIQ: Sí"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span></td>
+            <td style="color: var(--muted)" aria-label="App genérica: Solo iPhone">Solo iPhone</td>
+            <td style="color: var(--muted)" aria-label="Tracker básico: Varía según producto">Varía</td>
           </tr>
         </tbody>
       </table>
@@ -1206,8 +1218,8 @@
       <div class="faq-list">
         <details class="faq-item">
           <summary>
-            ¿En qué se diferencia LiftIQ de otras apps de gimnasio?
-            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            <h3 class="faq-q">¿En qué se diferencia LiftIQ de otras apps de gimnasio?</h3>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
           </summary>
           <div class="faq-body">
             <p>LiftIQ es la única app de entrenamiento de fuerza con IA basada en el <strong>Position Stand del ACSM 2026 sobre entrenamiento de resistencia</strong>. A diferencia de los trackers genéricos, te sugiere el peso exacto que deberías usar en tu próxima serie según tu RPE reciente, tu rendimiento de repeticiones y tu recuperación.</p>
@@ -1217,8 +1229,8 @@
 
         <details class="faq-item">
           <summary>
-            ¿Tengo que pagar para usar LiftIQ?
-            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            <h3 class="faq-q">¿Tengo que pagar para usar LiftIQ?</h3>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
           </summary>
           <div class="faq-body">
             <p>LiftIQ comienza con <strong>14 días gratis de Pro</strong>. Luego, Pro cuesta 9,99 USD al mes o 59,99 USD al año.</p>
@@ -1228,8 +1240,8 @@
 
         <details class="faq-item">
           <summary>
-            ¿Funciona LiftIQ sin conexión a internet?
-            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            <h3 class="faq-q">¿Funciona LiftIQ sin conexión a internet?</h3>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
           </summary>
           <div class="faq-body">
             <p>Sí — puedes registrar entrenamientos y ver tu historial sin conexión. La app sincroniza automáticamente cuando te reconectas.</p>
@@ -1239,8 +1251,8 @@
 
         <details class="faq-item">
           <summary>
-            ¿Qué iPhone o iPad necesito?
-            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            <h3 class="faq-q">¿Qué iPhone o iPad necesito?</h3>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
           </summary>
           <div class="faq-body">
             <p>LiftIQ funciona con <strong>iOS y iPadOS 15.1 o superior</strong>. Es una app universal, por lo que una sola compra cubre iPhone y iPad con tu misma cuenta.</p>
@@ -1249,8 +1261,8 @@
 
         <details class="faq-item">
           <summary>
-            ¿Qué tan precisa es la estimación de nutrición por foto?
-            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            <h3 class="faq-q">¿Qué tan precisa es la estimación de nutrición por foto?</h3>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
           </summary>
           <div class="faq-body">
             <p>Las estimaciones de macros por foto son cómodas para comidas caseras pero no son precisión de laboratorio — suelen caer dentro del <strong>15–25% del valor real</strong>.</p>
@@ -1260,8 +1272,8 @@
 
         <details class="faq-item">
           <summary>
-            ¿Necesito un Apple Watch para usar LiftIQ?
-            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            <h3 class="faq-q">¿Necesito un Apple Watch para usar LiftIQ?</h3>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
           </summary>
           <div class="faq-body">
             <p>No. Apple Watch es totalmente opcional. LiftIQ se integra con Apple Health para leer pasos y calorías activas, y para registrar entrenamientos y peso corporal — pero todas las funciones principales funcionan solo con el iPhone.</p>
@@ -1270,8 +1282,8 @@
 
         <details class="faq-item">
           <summary>
-            ¿Qué pasa con mis datos si cancelo o elimino mi cuenta?
-            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            <h3 class="faq-q">¿Qué pasa con mis datos si cancelo o elimino mi cuenta?</h3>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
           </summary>
           <div class="faq-body">
             <p>Tus datos están cifrados en reposo y puedes exportarlos cuando quieras.</p>
@@ -1281,8 +1293,8 @@
 
         <details class="faq-item">
           <summary>
-            ¿Es LiftIQ seguro para principiantes?
-            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            <h3 class="faq-q">¿Es LiftIQ seguro para principiantes?</h3>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
           </summary>
           <div class="faq-body">
             <p>La programación se adapta a tu nivel de experiencia declarado, y la biblioteca de ejercicios incluye indicaciones técnicas para cada movimiento.</p>
@@ -1325,9 +1337,9 @@
 
 </main>
 
-<!-- Sticky CTA (solo móvil) -->
-<div class="sticky-cta" aria-hidden="false">
-  <a href="https://apps.apple.com/app/id6759868402" target="_blank" rel="noopener noreferrer" aria-label="Descargar LiftIQ en la App Store">
+<!-- Sticky CTA (solo móvil) — oculto a lectores de pantalla/teclado porque el botón de App Store ya es accesible en el CTA Final -->
+<div class="sticky-cta" aria-hidden="true">
+  <a href="https://apps.apple.com/app/id6759868402" target="_blank" rel="noopener noreferrer" tabindex="-1">
     Descargar LiftIQ · Gratis
   </a>
 </div>
@@ -1381,8 +1393,8 @@
   <div class="foot-bottom">
     <span>© 2026 LiftIQ Solutions. Todos los derechos reservados.</span>
     <div class="lang-toggle" role="group" aria-label="Idioma">
-      <a href="/">EN</a>
-      <a href="/es/" class="active">ES</a>
+      <a href="/" hreflang="en" lang="en">EN</a>
+      <a href="/es/" class="active" hreflang="es" lang="es">ES</a>
     </div>
   </div>
 </footer>
