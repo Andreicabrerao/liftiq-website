@@ -1395,47 +1395,6 @@
     </div>
   </section>
 
-  <!-- ── Screenshots ── -->
-  <section class="bloc" id="screenshots">
-    <div class="section-head">
-      <span class="section-kicker">A closer look</span>
-      <h2>Designed for the gym floor.</h2>
-      <p>Glanceable, one-handed, and fast between sets.</p>
-    </div>
-
-    <div class="shots">
-      <div class="shots-scroller" role="list">
-        <figure class="shot" role="listitem">
-          <img src="/screenshots/screen-1.png" loading="lazy" alt="My Plan view with Push/Pull/Legs schedule and today's workout" onerror="this.style.display='none';this.parentNode.insertAdjacentHTML('beforeend','<div class=placeholder>Training plan</div>');" />
-        </figure>
-        <figure class="shot" role="listitem">
-          <img src="/screenshots/screen-2.png" loading="lazy" alt="Personal record celebration with trophy and total volume" onerror="this.style.display='none';this.parentNode.insertAdjacentHTML('beforeend','<div class=placeholder>PR celebration</div>');" />
-        </figure>
-        <figure class="shot" role="listitem">
-          <img src="/screenshots/screen-3.png" loading="lazy" alt="AI food photo analysis estimating calories and macros" onerror="this.style.display='none';this.parentNode.insertAdjacentHTML('beforeend','<div class=placeholder>AI food scan</div>');" />
-        </figure>
-        <figure class="shot" role="listitem">
-          <img src="/screenshots/screen-4.png" loading="lazy" alt="Nutrition tab with daily calorie ring and macro breakdown" onerror="this.style.display='none';this.parentNode.insertAdjacentHTML('beforeend','<div class=placeholder>Nutrition</div>');" />
-        </figure>
-        <figure class="shot" role="listitem">
-          <img src="/screenshots/screen-5.png" loading="lazy" alt="Progress tab with strength score and weekly volume" onerror="this.style.display='none';this.parentNode.insertAdjacentHTML('beforeend','<div class=placeholder>Progress</div>');" />
-        </figure>
-        <figure class="shot" role="listitem">
-          <img src="/screenshots/ai-coach.png" loading="lazy" alt="AI Coach chat answering questions about nutrition and recovery" onerror="this.style.display='none';this.parentNode.insertAdjacentHTML('beforeend','<div class=placeholder>AI Coach</div>');" />
-        </figure>
-        <button class="shot shot-video" role="listitem" type="button" onclick="openVideo('/screenshots/howToDo.mp4')" aria-label="Play exercise demo video">
-          <img src="/screenshots/howToDo-poster.jpg" alt="Exercise video demos showing proper form and technique" />
-          <span class="play-overlay" aria-hidden="true">
-            <span class="play-icon">
-              <svg viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19"/></svg>
-            </span>
-          </span>
-          <span class="play-label">Play demo</span>
-        </button>
-      </div>
-    </div>
-  </section>
-
   <!-- ── Founder / Why LiftIQ ── -->
   <section class="bloc founder" aria-label="Why LiftIQ exists">
     <div class="founder-inner">
@@ -1526,50 +1485,6 @@
     Download LiftIQ · Free
   </a>
 </div>
-
-<!-- ── Video Modal ── -->
-<div class="video-modal" id="videoModal" role="dialog" aria-modal="true" aria-label="Exercise demo video" onclick="if(event.target===this)closeVideo()">
-  <div class="video-modal-content">
-    <button class="video-modal-close" type="button" onclick="closeVideo()" aria-label="Close video">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-    </button>
-    <video id="videoModalPlayer" playsinline controls preload="none"></video>
-  </div>
-</div>
-
-<script>
-  (function() {
-    var modal = document.getElementById('videoModal');
-    var player = document.getElementById('videoModalPlayer');
-
-    window.openVideo = function(src) {
-      player.src = src;
-      modal.classList.add('open');
-      document.body.style.overflow = 'hidden';
-      // Small timeout so the modal is visible before we start playing
-      setTimeout(function() {
-        var playPromise = player.play();
-        if (playPromise && playPromise.catch) {
-          playPromise.catch(function() { /* user can tap play if autoplay blocked */ });
-        }
-      }, 50);
-    };
-
-    window.closeVideo = function() {
-      player.pause();
-      player.removeAttribute('src');
-      player.load();
-      modal.classList.remove('open');
-      document.body.style.overflow = '';
-    };
-
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape' && modal.classList.contains('open')) {
-        closeVideo();
-      }
-    });
-  })();
-</script>
 
 <footer class="site">
   <div class="foot-grid">

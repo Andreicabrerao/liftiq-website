@@ -873,46 +873,6 @@
     </div>
   </section>
 
-  <section class="bloc" id="screenshots">
-    <div class="section-head">
-      <span class="section-kicker">Una mirada de cerca</span>
-      <h2>Diseñada para usar en el gimnasio.</h2>
-      <p>Legible a simple vista, con una sola mano, y rápida entre series.</p>
-    </div>
-
-    <div class="shots">
-      <div class="shots-scroller" role="list">
-        <figure class="shot" role="listitem">
-          <img src="/screenshots/screen-1.png" loading="lazy" alt="Mi Plan con horario Empuje/Tirón/Piernas y rutina de hoy" onerror="this.style.display='none';this.parentNode.insertAdjacentHTML('beforeend','<div class=placeholder>Plan</div>');" />
-        </figure>
-        <figure class="shot" role="listitem">
-          <img src="/screenshots/screen-2.png" loading="lazy" alt="Celebración de récord personal con trofeo y volumen total" onerror="this.style.display='none';this.parentNode.insertAdjacentHTML('beforeend','<div class=placeholder>Récord personal</div>');" />
-        </figure>
-        <figure class="shot" role="listitem">
-          <img src="/screenshots/screen-3.png" loading="lazy" alt="Análisis de foto de comida con IA estimando calorías y macros" onerror="this.style.display='none';this.parentNode.insertAdjacentHTML('beforeend','<div class=placeholder>Escaneo de comida</div>');" />
-        </figure>
-        <figure class="shot" role="listitem">
-          <img src="/screenshots/screen-4.png" loading="lazy" alt="Pestaña de nutrición con anillo de calorías diarias y desglose de macros" onerror="this.style.display='none';this.parentNode.insertAdjacentHTML('beforeend','<div class=placeholder>Nutrición</div>');" />
-        </figure>
-        <figure class="shot" role="listitem">
-          <img src="/screenshots/screen-5.png" loading="lazy" alt="Pestaña de progreso con puntaje de fuerza y volumen semanal" onerror="this.style.display='none';this.parentNode.insertAdjacentHTML('beforeend','<div class=placeholder>Progreso</div>');" />
-        </figure>
-        <figure class="shot" role="listitem">
-          <img src="/screenshots/ai-coach.png" loading="lazy" alt="Chat del coach IA respondiendo sobre nutrición y recuperación" onerror="this.style.display='none';this.parentNode.insertAdjacentHTML('beforeend','<div class=placeholder>Coach IA</div>');" />
-        </figure>
-        <button class="shot shot-video" role="listitem" type="button" onclick="openVideo('/screenshots/howToDo.mp4')" aria-label="Reproducir video demostrativo de ejercicios">
-          <img src="/screenshots/howToDo-poster.jpg" alt="Videos demostrativos de ejercicios con indicaciones de técnica" />
-          <span class="play-overlay" aria-hidden="true">
-            <span class="play-icon">
-              <svg viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19"/></svg>
-            </span>
-          </span>
-          <span class="play-label">Ver demo</span>
-        </button>
-      </div>
-    </div>
-  </section>
-
   <!-- Founder / Por qué existe LiftIQ -->
   <section class="bloc founder" aria-label="Por qué existe LiftIQ">
     <div class="founder-inner">
@@ -1001,49 +961,6 @@
     Descargar LiftIQ · Gratis
   </a>
 </div>
-
-<!-- Video Modal -->
-<div class="video-modal" id="videoModal" role="dialog" aria-modal="true" aria-label="Video demostrativo de ejercicios" onclick="if(event.target===this)closeVideo()">
-  <div class="video-modal-content">
-    <button class="video-modal-close" type="button" onclick="closeVideo()" aria-label="Cerrar video">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-    </button>
-    <video id="videoModalPlayer" playsinline controls preload="none"></video>
-  </div>
-</div>
-
-<script>
-  (function() {
-    var modal = document.getElementById('videoModal');
-    var player = document.getElementById('videoModalPlayer');
-
-    window.openVideo = function(src) {
-      player.src = src;
-      modal.classList.add('open');
-      document.body.style.overflow = 'hidden';
-      setTimeout(function() {
-        var playPromise = player.play();
-        if (playPromise && playPromise.catch) {
-          playPromise.catch(function() {});
-        }
-      }, 50);
-    };
-
-    window.closeVideo = function() {
-      player.pause();
-      player.removeAttribute('src');
-      player.load();
-      modal.classList.remove('open');
-      document.body.style.overflow = '';
-    };
-
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape' && modal.classList.contains('open')) {
-        closeVideo();
-      }
-    });
-  })();
-</script>
 
 <footer class="site">
   <div class="foot-grid">
