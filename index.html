@@ -9,9 +9,9 @@
        X-Content-Type-Options: prevents MIME-sniffing attacks.
        Referrer-Policy: limits what URL info is sent when navigating away.
        Permissions-Policy: disables browser APIs we do not use (camera, geolocation, etc).
-       X-Frame-Options is intentionally omitted — use frame-ancestors in CSP instead.
-       HSTS cannot be set via meta tags (only real HTTP headers); GitHub Pages auto-enforces HTTPS. -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self' https://cloudflareinsights.com https://static.cloudflareinsights.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests" />
+       Note: frame-ancestors and HSTS only work as real HTTP headers, not via meta tag.
+             Clickjacking risk is negligible on a static marketing site with no auth/forms. -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self' https://cloudflareinsights.com https://static.cloudflareinsights.com; base-uri 'self'; form-action 'self'; upgrade-insecure-requests" />
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
   <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=(), usb=(), accelerometer=(), gyroscope=(), magnetometer=()" />

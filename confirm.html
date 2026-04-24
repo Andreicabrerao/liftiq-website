@@ -8,9 +8,11 @@
        - CSP: no external scripts/styles allowed. Only inline script/style (needed for auth handling).
        - Referrer-Policy: no-referrer prevents token leakage to any external site.
        - Permissions-Policy: disable everything we don't need.
-       - X-Frame-Options via CSP frame-ancestors: prevents clickjacking.
-       - X-Content-Type-Options: prevents MIME-sniffing. -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src 'self' data:; connect-src 'none'; frame-ancestors 'none'; base-uri 'none'; form-action 'none';" />
+       - X-Content-Type-Options: prevents MIME-sniffing.
+       Note: frame-ancestors only works as a real HTTP header, not via meta. On GitHub
+             Pages we can't set it. Risk is negligible here because any deep-link token
+             handling still requires the user to see and tap a visible button. -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src 'self' data:; connect-src 'none'; base-uri 'none'; form-action 'none';" />
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
   <meta name="referrer" content="no-referrer" />
   <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=(), usb=(), accelerometer=(), gyroscope=(), magnetometer=(), clipboard-read=(), clipboard-write=()" />
