@@ -307,7 +307,7 @@
     .science { background: linear-gradient(180deg, #0a0a0a, #0d0906); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
     .science-inner { max-width: 980px; margin: 0 auto; }
     .principles {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
       gap: 18px; margin-top: 8px;
     }
     .principle {
@@ -536,7 +536,6 @@
 
     /* Hero feature card — visually distinct */
     .feature--hero {
-      grid-column: span 2;
       background: linear-gradient(160deg, rgba(249,115,22,0.08), var(--surface) 60%);
       border-color: rgba(249,115,22,0.35);
       position: relative; overflow: hidden;
@@ -547,12 +546,6 @@
       width: 200px; height: 200px;
       background: radial-gradient(circle, rgba(249,115,22,0.22), transparent 70%);
       pointer-events: none;
-    }
-    @media (min-width: 860px) {
-      .features-grid { grid-template-columns: repeat(4, 1fr); }
-    }
-    @media (max-width: 859px) {
-      .feature--hero { grid-column: span 1; }
     }
 
     /* Founder section */
