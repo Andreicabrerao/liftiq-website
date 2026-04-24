@@ -510,6 +510,122 @@
       line-height: 1.55;
     }
 
+    /* ── Feature pillars (Hevy-style alternating layout) ── */
+    .pillars-container { max-width: 1120px; margin: 0 auto; }
+    .pillar {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+      padding: 48px 0;
+    }
+    .pillar + .pillar { border-top: 1px solid var(--border); }
+    .pillar--reverse .pillar-visual { order: 2; }
+    .pillar--reverse .pillar-content { order: 1; }
+
+    .pillar-visual {
+      display: flex;
+      justify-content: center;
+      position: relative;
+    }
+    .pillar-phone {
+      position: relative;
+      width: 100%;
+      max-width: 260px;
+      background: #000;
+      border-radius: 38px;
+      padding: 10px;
+      border: 2px solid #2a2a2a;
+      box-shadow:
+        0 0 0 1px rgba(249,115,22,0.16),
+        0 24px 60px rgba(249,115,22,0.14),
+        0 16px 48px rgba(0,0,0,0.5);
+    }
+    .pillar-phone-screen {
+      width: 100%;
+      aspect-ratio: 9 / 19.5;
+      border-radius: 28px;
+      background: #0a0a0a;
+      overflow: hidden;
+      position: relative;
+    }
+    .pillar-phone-screen img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .pillar-phone-notch {
+      position: absolute;
+      top: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90px;
+      height: 24px;
+      background: #000;
+      border-radius: 999px;
+      z-index: 2;
+    }
+
+    .pillar-content h3 {
+      font-size: clamp(26px, 3.2vw, 40px);
+      font-weight: 800;
+      letter-spacing: -1px;
+      line-height: 1.08;
+      margin-bottom: 14px;
+    }
+    .pillar-content > p {
+      color: var(--muted2);
+      font-size: 17px;
+      line-height: 1.6;
+      margin-bottom: 24px;
+      max-width: 440px;
+    }
+    .pillar-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      max-width: 440px;
+    }
+    .pillar-bullets li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      color: var(--text);
+      font-size: 15.5px;
+      line-height: 1.5;
+    }
+    .pillar-check {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: rgba(249,115,22,0.14);
+      border: 1px solid rgba(249,115,22,0.32);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1px;
+    }
+    .pillar-check svg { width: 12px; height: 12px; color: var(--accent); }
+
+    @media (max-width: 860px) {
+      .pillar {
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+        padding: 36px 0;
+      }
+      .pillar--reverse .pillar-visual,
+      .pillar--reverse .pillar-content,
+      .pillar-visual,
+      .pillar-content { order: initial; }
+      .pillar-content { text-align: center; }
+      .pillar-content > p,
+      .pillar-bullets { margin-left: auto; margin-right: auto; }
+      .pillar-bullets li { text-align: left; }
+    }
+
     /* ── Science section ── */
     .science {
       background: linear-gradient(180deg, #0a0a0a, #0d0906);
@@ -1161,50 +1277,82 @@
     </div>
   </div>
 
-  <!-- ── Features ── -->
+  <!-- ── Features: 3 pillars (alternating phone + bullets) ── -->
   <section class="bloc" id="features">
     <div class="section-head">
-    <span class="section-kicker">Features</span>
-    <h2>Six features that actually move your numbers.</h2>
-    <p>Built for lifters who want structured training, honest nutrition tracking, and real feedback — without the bloat.</p>
+      <span class="section-kicker">Features</span>
+      <h2>Three pillars that actually move your numbers.</h2>
+      <p>Everything you need to train, track, and fuel — without the bloat.</p>
     </div>
 
-    <div class="features-grid">
-      <article class="feature feature--hero">
-        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.39 6.94H22l-5.8 4.21 2.22 6.85L12 15.78l-6.42 4.22 2.22-6.85L2 8.94h7.61z"/></svg></div>
-        <h3>AI-generated workouts</h3>
-        <p>Plans built around your goal, experience, schedule, and equipment. Fresh programming every week.</p>
-      </article>
+    <div class="pillars-container">
 
-      <article class="feature">
-        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19h16"/><path d="M6 15l4-8 4 6 4-4"/></svg></div>
-        <h3>Smart weight suggestions</h3>
-        <p>Per-lift progression that adjusts to your recent RPE, rep performance, and recovery. No more guessing the next jump.</p>
-      </article>
+      <!-- Pillar 1 — Train smart -->
+      <div class="pillar">
+        <div class="pillar-visual">
+          <div class="pillar-phone">
+            <div class="pillar-phone-notch"></div>
+            <div class="pillar-phone-screen">
+              <img src="/screenshots/screen-1.png" loading="lazy" alt="My Plan view with Push/Pull/Legs schedule and today's workout" />
+            </div>
+          </div>
+        </div>
+        <div class="pillar-content">
+          <h3>Train smart.</h3>
+          <p>Plans that adapt to your goal, experience, and schedule — not the other way around.</p>
+          <ul class="pillar-bullets">
+            <li><span class="pillar-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> AI-generated plans built for your equipment and time</li>
+            <li><span class="pillar-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Per-lift weight suggestions that adapt to your RPE and recovery</li>
+            <li><span class="pillar-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Progressive overload baked in — the ACSM's strongest lever</li>
+            <li><span class="pillar-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> AI coach chat for form, programming, and plateau questions</li>
+          </ul>
+        </div>
+      </div>
 
-      <article class="feature">
-        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 4v16"/><path d="M10 4v16"/><path d="M14 4v16"/><path d="M17 4v16"/></svg></div>
-        <h3>Barcode + photo nutrition</h3>
-        <p>Scan any product barcode or snap a food photo. LiftIQ estimates macros in seconds, so logging stays out of the way.</p>
-      </article>
+      <!-- Pillar 2 — Track everything (reversed) -->
+      <div class="pillar pillar--reverse">
+        <div class="pillar-content">
+          <h3>Track everything.</h3>
+          <p>PR history, volume trends, 1RM projections — auto-updated every session.</p>
+          <ul class="pillar-bullets">
+            <li><span class="pillar-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Strength score and weekly volume at a glance</li>
+            <li><span class="pillar-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Automatic PR celebrations when you hit them</li>
+            <li><span class="pillar-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> 1RM projections adjusted for training age</li>
+            <li><span class="pillar-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Apple Health two-way sync</li>
+          </ul>
+        </div>
+        <div class="pillar-visual">
+          <div class="pillar-phone">
+            <div class="pillar-phone-notch"></div>
+            <div class="pillar-phone-screen">
+              <img src="/screenshots/screen-5.png" loading="lazy" alt="Progress tab with strength score and weekly volume" />
+            </div>
+          </div>
+        </div>
+      </div>
 
-      <article class="feature">
-        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="14 7 21 7 21 14"/></svg></div>
-        <h3>Progress you can see</h3>
-        <p>PR history, volume trends, streaks, and 1RM projections — auto-updated as you train. Watch the numbers move.</p>
-      </article>
+      <!-- Pillar 3 — Fuel your gains -->
+      <div class="pillar">
+        <div class="pillar-visual">
+          <div class="pillar-phone">
+            <div class="pillar-phone-notch"></div>
+            <div class="pillar-phone-screen">
+              <img src="/screenshots/screen-3.png" loading="lazy" alt="AI food photo analysis estimating calories and macros" />
+            </div>
+          </div>
+        </div>
+        <div class="pillar-content">
+          <h3>Fuel your gains.</h3>
+          <p>Log meals in seconds. Get macros right without the spreadsheet.</p>
+          <ul class="pillar-bullets">
+            <li><span class="pillar-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Barcode scanner for any packaged product</li>
+            <li><span class="pillar-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Photo macro estimation with AI — snap and go</li>
+            <li><span class="pillar-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Daily macros ring with 7-day adherence tracking</li>
+            <li><span class="pillar-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> 900k+ food database, plus custom foods</li>
+          </ul>
+        </div>
+      </div>
 
-      <article class="feature">
-        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
-        <h3>AI coach chat</h3>
-        <p>Ask form questions, tweak your split, troubleshoot plateaus. Your context is baked in — your goals, lifts, and history.</p>
-      </article>
-
-      <article class="feature">
-        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.6a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.07a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.79 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
-        <h3>Apple Health integration</h3>
-        <p>Read steps and active calories, write back workouts and body weight. Your health timeline stays in one place.</p>
-      </article>
     </div>
   </section>
 
@@ -1299,7 +1447,7 @@
         <span class="sig-mark" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8v8"/><path d="M18 8v8"/><path d="M3 10v4"/><path d="M21 10v4"/><path d="M6 12h12"/></svg>
         </span>
-        <span>Built by <strong>LiftIQ Solutions</strong> · Florida, USA</span>
+        <span>Built by <strong>LiftIQ Solutions</strong></span>
       </div>
     </div>
   </section>

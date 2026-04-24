@@ -304,6 +304,78 @@
     .feature h3 { font-size: 17px; font-weight: 700; color: var(--text); margin-bottom: 8px; letter-spacing: -0.2px; }
     .feature p { color: var(--muted2); font-size: 14.5px; line-height: 1.55; }
 
+    /* ── Feature pillars (Hevy-style alternating layout) ── */
+    .pillars-container { max-width: 1120px; margin: 0 auto; }
+    .pillar {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+      padding: 48px 0;
+    }
+    .pillar + .pillar { border-top: 1px solid var(--border); }
+    .pillar--reverse .pillar-visual { order: 2; }
+    .pillar--reverse .pillar-content { order: 1; }
+    .pillar-visual { display: flex; justify-content: center; position: relative; }
+    .pillar-phone {
+      position: relative; width: 100%; max-width: 260px;
+      background: #000; border-radius: 38px;
+      padding: 10px; border: 2px solid #2a2a2a;
+      box-shadow:
+        0 0 0 1px rgba(249,115,22,0.16),
+        0 24px 60px rgba(249,115,22,0.14),
+        0 16px 48px rgba(0,0,0,0.5);
+    }
+    .pillar-phone-screen {
+      width: 100%; aspect-ratio: 9 / 19.5;
+      border-radius: 28px; background: #0a0a0a;
+      overflow: hidden; position: relative;
+    }
+    .pillar-phone-screen img { width: 100%; height: 100%; object-fit: cover; }
+    .pillar-phone-notch {
+      position: absolute; top: 16px; left: 50%; transform: translateX(-50%);
+      width: 90px; height: 24px; background: #000; border-radius: 999px; z-index: 2;
+    }
+    .pillar-content h3 {
+      font-size: clamp(26px, 3.2vw, 40px);
+      font-weight: 800; letter-spacing: -1px; line-height: 1.08;
+      margin-bottom: 14px;
+    }
+    .pillar-content > p {
+      color: var(--muted2); font-size: 17px; line-height: 1.6;
+      margin-bottom: 24px; max-width: 440px;
+    }
+    .pillar-bullets {
+      list-style: none; display: flex; flex-direction: column;
+      gap: 14px; max-width: 440px;
+    }
+    .pillar-bullets li {
+      display: flex; align-items: flex-start; gap: 12px;
+      color: var(--text); font-size: 15.5px; line-height: 1.5;
+    }
+    .pillar-check {
+      flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%;
+      background: rgba(249,115,22,0.14);
+      border: 1px solid rgba(249,115,22,0.32);
+      display: flex; align-items: center; justify-content: center;
+      margin-top: 1px;
+    }
+    .pillar-check svg { width: 12px; height: 12px; color: var(--accent); }
+    @media (max-width: 860px) {
+      .pillar {
+        display: flex; flex-direction: column;
+        gap: 32px; padding: 36px 0;
+      }
+      .pillar--reverse .pillar-visual,
+      .pillar--reverse .pillar-content,
+      .pillar-visual,
+      .pillar-content { order: initial; }
+      .pillar-content { text-align: center; }
+      .pillar-content > p,
+      .pillar-bullets { margin-left: auto; margin-right: auto; }
+      .pillar-bullets li { text-align: left; }
+    }
+
     .science { background: linear-gradient(180deg, #0a0a0a, #0d0906); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
     .science-inner { max-width: 980px; margin: 0 auto; }
     .principles {
@@ -688,46 +760,78 @@
   <section class="bloc" id="features">
     <div class="section-head">
       <span class="section-kicker">Funciones</span>
-      <h2>Seis funciones que mueven tus números.</h2>
-      <p>Diseñado para quienes quieren entrenamiento estructurado, nutrición honesta y feedback real — sin ruido.</p>
+      <h2>Tres pilares que mueven tus números.</h2>
+      <p>Todo lo que necesitas para entrenar, registrar y nutrirte — sin ruido.</p>
     </div>
 
-    <div class="features-grid">
-      <article class="feature feature--hero">
-        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.39 6.94H22l-5.8 4.21 2.22 6.85L12 15.78l-6.42 4.22 2.22-6.85L2 8.94h7.61z"/></svg></div>
-        <h3>Rutinas generadas con IA</h3>
-        <p>Planes adaptados a tu objetivo, experiencia, horario y equipo. Programación nueva cada semana.</p>
-      </article>
+    <div class="pillars-container">
 
-      <article class="feature">
-        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19h16"/><path d="M6 15l4-8 4 6 4-4"/></svg></div>
-        <h3>Peso sugerido inteligente</h3>
-        <p>Progresión por ejercicio que se ajusta a tu RPE reciente, repeticiones logradas y recuperación. Adiós a las adivinanzas.</p>
-      </article>
+      <!-- Pilar 1 — Entrena con inteligencia -->
+      <div class="pillar">
+        <div class="pillar-visual">
+          <div class="pillar-phone">
+            <div class="pillar-phone-notch"></div>
+            <div class="pillar-phone-screen">
+              <img src="/screenshots/screen-1.png" loading="lazy" alt="Mi Plan con horario Empuje/Tirón/Piernas y rutina de hoy" />
+            </div>
+          </div>
+        </div>
+        <div class="pillar-content">
+          <h3>Entrena con inteligencia.</h3>
+          <p>Planes que se adaptan a tu objetivo, experiencia y horario — no al revés.</p>
+          <ul class="pillar-bullets">
+            <li><span class="pillar-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Rutinas generadas con IA según tu equipo y tiempo</li>
+            <li><span class="pillar-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Peso sugerido por ejercicio que se ajusta a tu RPE y recuperación</li>
+            <li><span class="pillar-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Sobrecarga progresiva integrada — el factor más fuerte según el ACSM</li>
+            <li><span class="pillar-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Coach IA por chat para técnica, programación y mesetas</li>
+          </ul>
+        </div>
+      </div>
 
-      <article class="feature">
-        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 4v16"/><path d="M10 4v16"/><path d="M14 4v16"/><path d="M17 4v16"/></svg></div>
-        <h3>Nutrición por código y foto</h3>
-        <p>Escanea cualquier código de barras o fotografía tu comida. LiftIQ estima macros en segundos — registrar deja de ser una tarea.</p>
-      </article>
+      <!-- Pilar 2 — Registra todo (invertido) -->
+      <div class="pillar pillar--reverse">
+        <div class="pillar-content">
+          <h3>Registra todo.</h3>
+          <p>Récords, volumen, proyecciones de 1RM — actualizados automáticamente en cada sesión.</p>
+          <ul class="pillar-bullets">
+            <li><span class="pillar-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Puntaje de fuerza y volumen semanal de un vistazo</li>
+            <li><span class="pillar-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Celebración automática de récords personales</li>
+            <li><span class="pillar-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Proyecciones de 1RM ajustadas a tu edad de entrenamiento</li>
+            <li><span class="pillar-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Sincronización bidireccional con Apple Health</li>
+          </ul>
+        </div>
+        <div class="pillar-visual">
+          <div class="pillar-phone">
+            <div class="pillar-phone-notch"></div>
+            <div class="pillar-phone-screen">
+              <img src="/screenshots/screen-5.png" loading="lazy" alt="Pestaña de progreso con puntaje de fuerza y volumen semanal" />
+            </div>
+          </div>
+        </div>
+      </div>
 
-      <article class="feature">
-        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="14 7 21 7 21 14"/></svg></div>
-        <h3>Progreso que se ve</h3>
-        <p>Récords personales, volumen, rachas y proyecciones de 1RM — actualizados solos. Mira cómo suben tus números.</p>
-      </article>
+      <!-- Pilar 3 — Nutre tus resultados -->
+      <div class="pillar">
+        <div class="pillar-visual">
+          <div class="pillar-phone">
+            <div class="pillar-phone-notch"></div>
+            <div class="pillar-phone-screen">
+              <img src="/screenshots/screen-3.png" loading="lazy" alt="Análisis de foto de comida con IA estimando calorías y macros" />
+            </div>
+          </div>
+        </div>
+        <div class="pillar-content">
+          <h3>Nutre tus resultados.</h3>
+          <p>Registra comidas en segundos. Macros correctos sin la hoja de cálculo.</p>
+          <ul class="pillar-bullets">
+            <li><span class="pillar-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Escáner de códigos de barras para cualquier producto</li>
+            <li><span class="pillar-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Estimación de macros por foto con IA — fotografía y listo</li>
+            <li><span class="pillar-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Anillo de macros diarios con seguimiento de adherencia a 7 días</li>
+            <li><span class="pillar-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Base de datos de 900.000+ alimentos, más alimentos personalizados</li>
+          </ul>
+        </div>
+      </div>
 
-      <article class="feature">
-        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
-        <h3>Coach IA por chat</h3>
-        <p>Pregunta sobre técnica, ajusta tu rutina o rompe mesetas. Tu contexto ya está cargado: objetivos, ejercicios e historial.</p>
-      </article>
-
-      <article class="feature">
-        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.6a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.07a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.79 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
-        <h3>Integración con Apple Health</h3>
-        <p>Lee pasos y calorías activas, y registra entrenamientos y peso corporal. Tu historial de salud en un solo lugar.</p>
-      </article>
     </div>
   </section>
 
@@ -820,7 +924,7 @@
         <span class="sig-mark" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8v8"/><path d="M18 8v8"/><path d="M3 10v4"/><path d="M21 10v4"/><path d="M6 12h12"/></svg>
         </span>
-        <span>Hecho por <strong>LiftIQ Solutions</strong> · Florida, USA</span>
+        <span>Hecho por <strong>LiftIQ Solutions</strong></span>
       </div>
     </div>
   </section>
