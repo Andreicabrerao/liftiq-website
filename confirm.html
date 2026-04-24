@@ -3,6 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ── Security headers (stricter than main site because this page handles auth tokens) ──
+       - CSP: no external scripts/styles allowed. Only inline script/style (needed for auth handling).
+       - Referrer-Policy: no-referrer prevents token leakage to any external site.
+       - Permissions-Policy: disable everything we don't need.
+       - X-Frame-Options via CSP frame-ancestors: prevents clickjacking.
+       - X-Content-Type-Options: prevents MIME-sniffing. -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src 'self' data:; connect-src 'none'; frame-ancestors 'none'; base-uri 'none'; form-action 'none';" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta name="referrer" content="no-referrer" />
+  <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=(), usb=(), accelerometer=(), gyroscope=(), magnetometer=(), clipboard-read=(), clipboard-write=()" />
+
+  <!-- noindex: don't let search engines crawl this page; it contains auth tokens in URLs -->
+  <meta name="robots" content="noindex, nofollow" />
+
   <title>LiftIQ — You're in!</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -52,7 +67,7 @@
 
     .tagline {
       font-size: 16px;
-      color: #a3a3a3;
+      color: #b0b0b0;
       line-height: 1.5;
       max-width: 280px;
       margin: 0 auto 40px;
@@ -75,7 +90,7 @@
 
     .status {
       font-size: 13px;
-      color: #a3a3a3;
+      color: #b0b0b0;
       margin-bottom: 6px;
       display: flex;
       align-items: center;
@@ -104,7 +119,7 @@
 
     .sub {
       font-size: 14px;
-      color: #737373;
+      color: #909090;
       line-height: 1.5;
     }
 
@@ -132,7 +147,7 @@
       width: 100%;
       max-width: 360px;
       background: transparent;
-      color: #a3a3a3;
+      color: #b0b0b0;
       font-size: 14px;
       padding: 14px;
       border-radius: 14px;
@@ -147,10 +162,9 @@
     .footer {
       margin-top: 48px;
       font-size: 12px;
-      color: #404040;
+      color: #606060;
     }
 
-    /* Recovery / password-reset variant */
     .recovery-badge {
       display: inline-flex;
       align-items: center;
@@ -168,7 +182,7 @@
 </head>
 <body>
 
-  <div class="logo-ring">🏋️</div>
+  <div class="logo-ring" aria-hidden="true">🏋️</div>
   <div class="app-name">LiftIQ</div>
   <p class="tagline" id="tagline">
     You're ready to <strong>transform your life</strong>.<br/>
@@ -177,7 +191,7 @@
 
   <div class="card">
     <div class="status">
-      <div class="status-dot"></div>
+      <div class="status-dot" aria-hidden="true"></div>
       <span id="status-text">Opening LiftIQ…</span>
     </div>
     <div class="heading" id="card-heading">✅ You're confirmed!</div>
@@ -186,7 +200,7 @@
     </p>
   </div>
 
-  <a class="btn-open" id="btn-open" href="#">Open LiftIQ</a>
+  <a class="btn-open" id="btn-open" href="liftiq://">Open LiftIQ</a>
   <a class="btn-store" id="btn-store" href="https://apps.apple.com/app/id6759868402" target="_blank" rel="noopener noreferrer">
     Download on the App Store
   </a>
@@ -194,90 +208,215 @@
   <div class="footer">© 2026 LiftIQ. All rights reserved.</div>
 
   <script>
-    // ── Bilingual strings — swapped in if browser prefers Spanish ─────────────
-    const isES = (navigator.language || 'en').toLowerCase().startsWith('es')
-    if (isES) {
-      document.title = "LiftIQ — ¡Ya estás dentro!"
-      document.getElementById('tagline').innerHTML =
-        "Listo para <strong>transformar tu vida</strong>.<br/>Vamos al trabajo."
-      document.getElementById('status-text').textContent = 'Abriendo LiftIQ…'
-      document.getElementById('card-heading').textContent = '✅ ¡Cuenta confirmada!'
-      document.getElementById('card-sub').textContent =
-        'Tu cuenta está verificada. Toca abajo si la app no se abre sola.'
-      document.getElementById('btn-open').textContent = 'Abrir LiftIQ'
-      document.getElementById('btn-store').textContent = 'Descargar en App Store'
-    }
+    // ═══════════════════════════════════════════════════════════════════════════
+    //  LiftIQ auth callback handler — security-hardened
+    //
+    //  This page receives Supabase auth redirects (email confirmation, password
+    //  recovery, magic link) and passes the token/code to the native iOS app
+    //  via deep link. We treat all URL params as UNTRUSTED input.
+    // ═══════════════════════════════════════════════════════════════════════════
 
-    // ── Detect flow type from URL fragment / query ────────────────────────────
-    const hash   = window.location.hash.slice(1)   // strip #
-    const search = window.location.search.slice(1) // strip ?
+    (function () {
+      'use strict';
 
-    // Prefer fragment (implicit flow), fall back to query (PKCE)
-    const params = new URLSearchParams(hash || search)
+      // ── Constants ─────────────────────────────────────────────────────────
+      // Hardcoded deep link scheme — NEVER use a redirect_to param from the URL
+      // (would be an open redirect vulnerability).
+      var DEEP_LINK_SCHEME = 'liftiq://';
+      var APP_STORE_URL = 'https://apps.apple.com/app/id6759868402';
 
-    const type         = params.get('type')            // 'signup', 'recovery', 'magiclink'
-    const accessToken  = params.get('access_token')
-    const refreshToken = params.get('refresh_token')
-    const code         = params.get('code')
-    const error        = params.get('error')
-    const errorDesc    = params.get('error_description')
+      // Max lengths to prevent DoS via absurdly long URL params.
+      var MAX_TOKEN_LEN = 4096;
+      var MAX_TYPE_LEN = 32;
+      var MAX_CODE_LEN = 256;
 
-    // ── Error state ───────────────────────────────────────────────────────────
-    if (error) {
-      document.getElementById('card-heading').textContent =
-        isES ? '⚠️ Enlace caducado' : '⚠️ Link expired'
-      document.getElementById('card-sub').textContent =
-        errorDesc || (isES
-          ? 'Este enlace caducó o ya fue utilizado. Solicita uno nuevo desde la app.'
-          : 'This link has expired or already been used. Please request a new one in the app.')
-      document.getElementById('status-text').textContent = isES ? 'Enlace no válido' : 'Link invalid'
-      document.querySelector('.status-dot').style.background = '#ef4444'
-      document.getElementById('btn-open').href = 'liftiq://'
-      document.getElementById('btn-open').textContent = isES ? 'Volver a LiftIQ' : 'Back to LiftIQ'
-    }
+      // Allowlist of flow types Supabase actually sends us.
+      var VALID_TYPES = ['signup', 'recovery', 'magiclink', 'email_change', 'invite'];
 
-    // ── Password reset flow ───────────────────────────────────────────────────
-    else if (type === 'recovery') {
-      const tagline = document.getElementById('tagline')
-      tagline.replaceChildren(
-        document.createTextNode(isES ? 'Restableciendo tu contraseña.' : 'Resetting your password.'),
-        document.createElement('br'),
-        Object.assign(document.createElement('strong'), { textContent: isES ? '¡Ya casi!' : 'Almost there!' }),
-      )
-      document.getElementById('card-heading').textContent =
-        isES ? '🔐 Restablecer contraseña' : '🔐 Reset your password'
-      document.getElementById('card-sub').textContent = isES
-        ? 'Toca abajo para abrir LiftIQ y elegir una nueva contraseña.'
-        : 'Tap below to open LiftIQ and choose your new password.'
+      // Regex for acceptable code/token characters (base64url + JWT chars).
+      // Rejects anything with <, >, ", ', backtick, newlines, etc.
+      var SAFE_TOKEN_RE = /^[A-Za-z0-9._\-]+$/;
 
-      const badge = document.createElement('div')
-      badge.className = 'recovery-badge'
-      badge.textContent = isES ? '🔑 Restablecer contraseña' : '🔑 Password Reset'
-      document.querySelector('.card').prepend(badge)
-    }
+      // ── Helpers ───────────────────────────────────────────────────────────
+      function isES() {
+        try {
+          return (navigator.language || 'en').toLowerCase().indexOf('es') === 0;
+        } catch (_) {
+          return false;
+        }
+      }
 
-    // ── Build the deep link ───────────────────────────────────────────────────
-    let deepLink
-    if (code) {
-      // PKCE flow — pass code through
-      deepLink = `liftiq://callback?code=${encodeURIComponent(code)}`
-      if (type) deepLink += `&type=${encodeURIComponent(type)}`
-    } else if (accessToken) {
-      // Implicit flow — pass full fragment
-      deepLink = `liftiq://callback#${hash || search}`
-    } else {
-      // Fallback — just open the app
-      deepLink = 'liftiq://'
-    }
+      function sanitizeToken(value, maxLen) {
+        if (typeof value !== 'string') return null;
+        if (value.length === 0 || value.length > maxLen) return null;
+        if (!SAFE_TOKEN_RE.test(value)) return null;
+        return value;
+      }
 
-    document.getElementById('btn-open').href = deepLink
+      function sanitizeType(value) {
+        if (typeof value !== 'string') return null;
+        if (value.length === 0 || value.length > MAX_TYPE_LEN) return null;
+        return VALID_TYPES.indexOf(value) !== -1 ? value : null;
+      }
 
-    // ── Auto-redirect after short delay ──────────────────────────────────────
-    if (!error) {
-      setTimeout(() => {
-        window.location.href = deepLink
-      }, 1200)
-    }
+      function clearUrl() {
+        // Remove tokens from URL so they don't leak into:
+        //  - browser history (and cross-device sync)
+        //  - window.location.href (visible to any same-origin script)
+        //  - document.referrer when the user clicks any outgoing link
+        try {
+          if (window.history && typeof window.history.replaceState === 'function') {
+            window.history.replaceState(null, '', window.location.pathname);
+          }
+        } catch (_) { /* noop */ }
+      }
+
+      function setText(id, text) {
+        var el = document.getElementById(id);
+        if (el) el.textContent = text;
+      }
+
+      function setHref(id, href) {
+        var el = document.getElementById(id);
+        if (el) el.setAttribute('href', href);
+      }
+
+      // ── i18n strings ──────────────────────────────────────────────────────
+      var es = isES();
+      var strings = es ? {
+        title: 'LiftIQ — ¡Ya estás dentro!',
+        taglineHtml: 'Listo para <strong>transformar tu vida</strong>.<br/>Vamos al trabajo.',
+        statusOpening: 'Abriendo LiftIQ…',
+        cardHeadingOk: '✅ ¡Cuenta confirmada!',
+        cardSubOk: 'Tu cuenta está verificada. Toca abajo si la app no se abre sola.',
+        btnOpen: 'Abrir LiftIQ',
+        btnStore: 'Descargar en App Store',
+        cardHeadingErr: '⚠️ Enlace caducado',
+        cardSubErr: 'Este enlace caducó o ya fue utilizado. Solicita uno nuevo desde la app.',
+        statusInvalid: 'Enlace no válido',
+        btnBack: 'Volver a LiftIQ',
+        recoveryTagline: 'Restableciendo tu contraseña.',
+        recoveryAlmost: '¡Ya casi!',
+        recoveryHeading: '🔐 Restablecer contraseña',
+        recoverySub: 'Toca abajo para abrir LiftIQ y elegir una nueva contraseña.',
+        recoveryBadge: '🔑 Restablecer contraseña'
+      } : {
+        title: "LiftIQ — You're in!",
+        taglineHtml: "You're ready to <strong>transform your life</strong>.<br/>Let's get to work.",
+        statusOpening: 'Opening LiftIQ…',
+        cardHeadingOk: "✅ You're confirmed!",
+        cardSubOk: "Your account is verified. Tap below if the app doesn't open automatically.",
+        btnOpen: 'Open LiftIQ',
+        btnStore: 'Download on the App Store',
+        cardHeadingErr: '⚠️ Link expired',
+        cardSubErr: 'This link has expired or already been used. Please request a new one in the app.',
+        statusInvalid: 'Link invalid',
+        btnBack: 'Back to LiftIQ',
+        recoveryTagline: 'Resetting your password.',
+        recoveryAlmost: 'Almost there!',
+        recoveryHeading: '🔐 Reset your password',
+        recoverySub: 'Tap below to open LiftIQ and choose your new password.',
+        recoveryBadge: '🔑 Password Reset'
+      };
+
+      // Apply i18n
+      document.title = strings.title;
+      var tagline = document.getElementById('tagline');
+      if (tagline) {
+        // Safe to use innerHTML here: `taglineHtml` is a hardcoded constant,
+        // never user input. The <br/> is part of the design.
+        tagline.innerHTML = strings.taglineHtml;
+      }
+      setText('status-text', strings.statusOpening);
+      setText('card-heading', strings.cardHeadingOk);
+      setText('card-sub', strings.cardSubOk);
+      setText('btn-open', strings.btnOpen);
+      setText('btn-store', strings.btnStore);
+
+      // ── Parse URL params (from fragment first, then query) ────────────────
+      // Capture original URL parts BEFORE cleaning.
+      var hash = window.location.hash.slice(1);     // strip '#'
+      var search = window.location.search.slice(1); // strip '?'
+
+      var params;
+      try {
+        params = new URLSearchParams(hash || search);
+      } catch (_) {
+        params = new URLSearchParams('');
+      }
+
+      // Sanitize every input we might use.
+      var type = sanitizeType(params.get('type'));
+      var accessToken = sanitizeToken(params.get('access_token'), MAX_TOKEN_LEN);
+      var refreshToken = sanitizeToken(params.get('refresh_token'), MAX_TOKEN_LEN);
+      var code = sanitizeToken(params.get('code'), MAX_CODE_LEN);
+      var hasError = !!params.get('error');
+
+      // IMMEDIATELY clear the URL — remove tokens from history and referrer.
+      // We've already captured what we need in sanitized local variables.
+      clearUrl();
+
+      // ── Render appropriate state ──────────────────────────────────────────
+      if (hasError) {
+        setText('card-heading', strings.cardHeadingErr);
+        setText('card-sub', strings.cardSubErr);
+        setText('status-text', strings.statusInvalid);
+        var dot = document.querySelector('.status-dot');
+        if (dot) dot.style.background = '#ef4444';
+        setHref('btn-open', DEEP_LINK_SCHEME);
+        setText('btn-open', strings.btnBack);
+        return; // no auto-redirect on error
+      }
+
+      // Password reset UI — update copy before building deep link.
+      if (type === 'recovery') {
+        if (tagline) {
+          tagline.replaceChildren(
+            document.createTextNode(strings.recoveryTagline),
+            document.createElement('br'),
+            Object.assign(document.createElement('strong'), { textContent: strings.recoveryAlmost })
+          );
+        }
+        setText('card-heading', strings.recoveryHeading);
+        setText('card-sub', strings.recoverySub);
+
+        var badge = document.createElement('div');
+        badge.className = 'recovery-badge';
+        badge.textContent = strings.recoveryBadge;
+        var card = document.querySelector('.card');
+        if (card) card.prepend(badge);
+      }
+
+      // ── Build the deep link (always starts with hardcoded scheme) ─────────
+      var deepLink;
+      if (code) {
+        // PKCE flow — pass the sanitized code through.
+        deepLink = DEEP_LINK_SCHEME + 'callback?code=' + encodeURIComponent(code);
+        if (type) deepLink += '&type=' + encodeURIComponent(type);
+      } else if (accessToken) {
+        // Implicit flow — rebuild fragment from sanitized pieces only.
+        // We do NOT pass the raw original hash (could contain unsanitized junk).
+        var parts = ['access_token=' + encodeURIComponent(accessToken)];
+        if (refreshToken) parts.push('refresh_token=' + encodeURIComponent(refreshToken));
+        if (type) parts.push('type=' + encodeURIComponent(type));
+        deepLink = DEEP_LINK_SCHEME + 'callback#' + parts.join('&');
+      } else {
+        // No recognized auth params — just open the app cold.
+        deepLink = DEEP_LINK_SCHEME;
+      }
+
+      setHref('btn-open', deepLink);
+
+      // ── Auto-redirect after short delay ───────────────────────────────────
+      // We do NOT wait for user interaction because the tokens in the URL are
+      // already gone (we cleared them above). The deep link lives only in the
+      // href of the button and as a location change.
+      setTimeout(function () {
+        try {
+          window.location.href = deepLink;
+        } catch (_) { /* user can tap the button */ }
+      }, 1200);
+    })();
   </script>
 
 </body>

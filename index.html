@@ -3,6 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ── Security headers (meta-tag fallback; GitHub Pages does not support real HTTP headers) ──
+       Content-Security-Policy: restricts where scripts/styles/images/etc can load from.
+       X-Content-Type-Options: prevents MIME-sniffing attacks.
+       Referrer-Policy: limits what URL info is sent when navigating away.
+       Permissions-Policy: disables browser APIs we do not use (camera, geolocation, etc).
+       X-Frame-Options is intentionally omitted — use frame-ancestors in CSP instead.
+       HSTS cannot be set via meta tags (only real HTTP headers); GitHub Pages auto-enforces HTTPS. -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self' https://cloudflareinsights.com https://static.cloudflareinsights.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=(), usb=(), accelerometer=(), gyroscope=(), magnetometer=()" />
+
   <title>LiftIQ — AI Workout Coach &amp; Strength Training App for iPhone</title>
   <meta name="description" content="AI-powered strength training app for iPhone and iPad. Smart weight suggestions that adapt to your RPE and recovery. Built on the 2026 ACSM Position Stand on Resistance Training. 14-day free trial." />
   <meta name="keywords" content="AI workout app, strength training app, gym app, weight lifting tracker, smart workout, AI coach, progressive overload, iPhone fitness app" />
@@ -1652,7 +1665,7 @@
       <div class="citation">
         <strong>Full citation</strong>
         Currier BS, D'Souza AC, Fiatarone Singh MA, et al. American College of Sports Medicine Position Stand. Resistance Training Prescription for Muscle Function, Hypertrophy, and Physical Performance in Healthy Adults: An Overview of Reviews. <em>Med Sci Sports Exerc.</em> 2026;58(4):851–872. doi:10.1249/MSS.0000000000003897
-        <a class="citation-link" href="https://doi.org/10.1249/MSS.0000000000003897" target="_blank" rel="noopener">
+        <a class="citation-link" href="https://doi.org/10.1249/MSS.0000000000003897" target="_blank" rel="noopener noreferrer">
           Read the paper
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </a>

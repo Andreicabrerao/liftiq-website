@@ -3,6 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Security headers (meta-tag fallback) -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=(), usb=(), accelerometer=(), gyroscope=(), magnetometer=()" />
+
   <title>Privacy Policy — LiftIQ</title>
   <meta name="description" content="LiftIQ Privacy Policy — how we collect, use, and protect your data." />
   <style>
@@ -410,27 +417,27 @@
           <tr>
             <td>Supabase</td>
             <td>Database, authentication, file storage</td>
-            <td><a href="https://supabase.com/privacy" target="_blank" rel="noopener">supabase.com/privacy</a></td>
+            <td><a href="https://supabase.com/privacy" target="_blank" rel="noopener noreferrer">supabase.com/privacy</a></td>
           </tr>
           <tr>
             <td>RevenueCat</td>
             <td>Subscription management &amp; billing</td>
-            <td><a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener">revenuecat.com/privacy</a></td>
+            <td><a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener noreferrer">revenuecat.com/privacy</a></td>
           </tr>
           <tr>
             <td>Groq, Inc.</td>
             <td>AI Coach message processing (Llama 3.3)</td>
-            <td><a href="https://groq.com/privacy" target="_blank" rel="noopener">groq.com/privacy</a></td>
+            <td><a href="https://groq.com/privacy" target="_blank" rel="noopener noreferrer">groq.com/privacy</a></td>
           </tr>
           <tr>
             <td>Sentry</td>
             <td>Crash reporting &amp; error monitoring</td>
-            <td><a href="https://sentry.io/privacy/" target="_blank" rel="noopener">sentry.io/privacy</a></td>
+            <td><a href="https://sentry.io/privacy/" target="_blank" rel="noopener noreferrer">sentry.io/privacy</a></td>
           </tr>
           <tr>
             <td>Apple Health</td>
             <td>Fitness data read/write (iOS, opt-in)</td>
-            <td><a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">apple.com/legal/privacy</a></td>
+            <td><a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener noreferrer">apple.com/legal/privacy</a></td>
           </tr>
         </tbody>
       </table>
@@ -443,6 +450,14 @@
     <p>LiftIQ's AI Coach feature uses artificial intelligence to provide personalized fitness guidance. When you use the AI Coach, your messages and relevant profile data (such as fitness goals, training schedule, and health conditions you have disclosed) are sent to a third-party AI service provider (Groq, Inc.) to generate responses. This data is used solely to produce your coaching responses and is not stored by the AI provider beyond the duration of the request.</p>
     <p>The AI Coach is powered by Meta's Llama large language model, operated through Groq's infrastructure. By using the AI Coach feature, you consent to your coaching messages being processed by this third-party service. You can stop using the AI Coach at any time by navigating away from the chat.</p>
     <p>We do not sell your data to AI providers or use your data to train AI models.</p>
+  </section>
+
+  <!-- 3.6 Website Analytics -->
+  <section>
+    <h2>Website Analytics</h2>
+    <p>Our public marketing website (<a href="https://liftiqsolutions.app/">liftiqsolutions.app</a>) uses <strong>Cloudflare Web Analytics</strong> to measure aggregate visitor traffic. Cloudflare Web Analytics is cookie-free and privacy-preserving by design: it does not set any cookies, does not use fingerprinting, and does not collect personally identifiable information.</p>
+    <p>The data collected is limited to aggregate counts such as page views, browser type, and country. We use this information only to understand overall traffic trends to the website. See <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer">Cloudflare's privacy policy</a> for full details.</p>
+    <p>Note: Cloudflare Web Analytics runs only on the public website. It does not run inside the LiftIQ mobile app.</p>
   </section>
 
   <!-- 4. Data Retention -->

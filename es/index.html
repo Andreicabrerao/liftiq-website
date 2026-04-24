@@ -3,6 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Security headers (meta-tag fallback; GitHub Pages does not support real HTTP headers) -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self' https://cloudflareinsights.com https://static.cloudflareinsights.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=(), usb=(), accelerometer=(), gyroscope=(), magnetometer=()" />
+
   <title>LiftIQ — App de Entrenamiento de Fuerza con IA para iPhone</title>
   <meta name="description" content="App de entrenamiento de fuerza con IA para iPhone y iPad. Sugerencias de peso que se adaptan a tu RPE y recuperación. Basada en el ACSM Position Stand 2026. 14 días gratis." />
   <meta name="keywords" content="app de gimnasio, entrenamiento con IA, app de pesas, coach IA fitness, entrenamiento de fuerza iPhone, app workout" />
@@ -1048,7 +1055,7 @@
       <div class="citation">
         <strong>Cita completa</strong>
         Currier BS, D'Souza AC, Fiatarone Singh MA, et al. American College of Sports Medicine Position Stand. Resistance Training Prescription for Muscle Function, Hypertrophy, and Physical Performance in Healthy Adults: An Overview of Reviews. <em>Med Sci Sports Exerc.</em> 2026;58(4):851–872. doi:10.1249/MSS.0000000000003897
-        <a class="citation-link" href="https://doi.org/10.1249/MSS.0000000000003897" target="_blank" rel="noopener">
+        <a class="citation-link" href="https://doi.org/10.1249/MSS.0000000000003897" target="_blank" rel="noopener noreferrer">
           Leer el paper
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </a>
