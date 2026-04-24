@@ -3,3 +3,7 @@
 node_modules/
 .env
 .env.local
+
+# Local helper scripts (not for production)
+setup-*.sh
+generate-og-image.py

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <url>
+    <loc>https://liftiqsolutions.app/</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://liftiqsolutions.app/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://liftiqsolutions.app/es/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://liftiqsolutions.app/"/>
+  </url>
+
+  <url>
+    <loc>https://liftiqsolutions.app/es/</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://liftiqsolutions.app/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://liftiqsolutions.app/es/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://liftiqsolutions.app/"/>
+  </url>
+
+  <url>
+    <loc>https://liftiqsolutions.app/terms</loc>
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://liftiqsolutions.app/terms"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://liftiqsolutions.app/es/terms"/>
+  </url>
+
+  <url>
+    <loc>https://liftiqsolutions.app/es/terms</loc>
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://liftiqsolutions.app/terms"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://liftiqsolutions.app/es/terms"/>
+  </url>
+
+  <url>
+    <loc>https://liftiqsolutions.app/privacy</loc>
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://liftiqsolutions.app/privacy"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://liftiqsolutions.app/es/privacy"/>
+  </url>
+
+  <url>
+    <loc>https://liftiqsolutions.app/es/privacy</loc>
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://liftiqsolutions.app/privacy"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://liftiqsolutions.app/es/privacy"/>
+  </url>
+
+  <url>
+    <loc>https://liftiqsolutions.app/support</loc>
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://liftiqsolutions.app/support"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://liftiqsolutions.app/es/support"/>
+  </url>
+
+  <url>
+    <loc>https://liftiqsolutions.app/es/support</loc>
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://liftiqsolutions.app/support"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://liftiqsolutions.app/es/support"/>
+  </url>
+
+</urlset>

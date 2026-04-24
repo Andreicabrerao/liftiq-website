@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# Block Apple App Site Association files from indexing (not relevant for search)
+Disallow: /.well-known/apple-app-site-association
+
+Sitemap: https://liftiqsolutions.app/sitemap.xml
