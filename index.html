@@ -434,12 +434,12 @@
     }
 
     /* ── Sections ── */
-    section.bloc { padding: 96px 24px; }
-    @media (max-width: 720px) { section.bloc { padding: 72px 20px; } }
+    section.bloc { padding: 72px 24px; }
+    @media (max-width: 720px) { section.bloc { padding: 56px 20px; } }
 
     .section-head {
       text-align: center;
-      margin-bottom: 56px;
+      margin-bottom: 44px;
     }
     .section-kicker {
       display: inline-block;
@@ -496,7 +496,7 @@
       margin-bottom: 18px;
       color: var(--accent);
     }
-    .feature-icon svg { width: 22px; height: 22px; }
+    .feature-icon svg { width: 26px; height: 26px; }
     .feature h3 {
       font-size: 17px;
       font-weight: 700;
@@ -532,6 +532,7 @@
       border-left: 3px solid var(--accent);
       border-radius: 0 14px 14px 0;
       padding: 22px 24px;
+      position: relative;
     }
     .principle h4 {
       font-size: 15px;
@@ -544,25 +545,60 @@
       font-size: 14px;
       line-height: 1.55;
     }
+    /* Primary principle — the most important one gets extra emphasis */
+    .principle--primary {
+      background: linear-gradient(160deg, rgba(249,115,22,0.07), var(--surface) 60%);
+      border-color: rgba(249,115,22,0.28);
+      border-left-width: 5px;
+    }
+    .principle--primary::before {
+      content: 'CORE';
+      position: absolute;
+      top: 16px; right: 16px;
+      font-size: 9.5px; font-weight: 800;
+      letter-spacing: 1px;
+      color: var(--accent);
+      background: rgba(249,115,22,0.14);
+      padding: 3px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(249,115,22,0.30);
+    }
+    .principle--primary h4 { padding-right: 58px; }
+
     .citation {
-      margin-top: 48px;
-      padding: 20px 24px;
+      margin-top: 36px;
+      padding: 24px 28px;
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 14px;
       font-size: 13px;
       color: var(--muted);
-      line-height: 1.6;
+      line-height: 1.65;
     }
     .citation strong {
       color: var(--muted2);
       display: block;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
       font-size: 11px;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.5px;
     }
+    .citation-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: gap 0.15s ease;
+    }
+    .citation-link:hover { text-decoration: none; gap: 10px; }
+    .citation-link svg { width: 14px; height: 14px; }
 
     /* ── Screenshots ── */
     .shots {
@@ -1128,9 +1164,9 @@
   <!-- ── Features ── -->
   <section class="bloc" id="features">
     <div class="section-head">
-      <span class="section-kicker">Features</span>
-      <h2>Everything you need, nothing you don't.</h2>
-      <p>Built for lifters who want structured training, honest nutrition tracking, and real feedback — without the bloat.</p>
+    <span class="section-kicker">Features</span>
+    <h2>Six features that actually move your numbers.</h2>
+    <p>Built for lifters who want structured training, honest nutrition tracking, and real feedback — without the bloat.</p>
     </div>
 
     <div class="features-grid">
@@ -1182,7 +1218,7 @@
       </div>
 
       <div class="principles">
-        <div class="principle">
+        <div class="principle principle--primary">
           <h4>Progressive overload</h4>
           <p>Load and volume are tracked per-lift. The app surfaces small, manageable jumps over time — the single strongest driver of strength and hypertrophy adaptation.</p>
         </div>
@@ -1203,6 +1239,10 @@
       <div class="citation">
         <strong>Full citation</strong>
         Currier BS, D'Souza AC, Fiatarone Singh MA, et al. American College of Sports Medicine Position Stand. Resistance Training Prescription for Muscle Function, Hypertrophy, and Physical Performance in Healthy Adults: An Overview of Reviews. <em>Med Sci Sports Exerc.</em> 2026;58(4):851–872. doi:10.1249/MSS.0000000000003897
+        <a class="citation-link" href="https://doi.org/10.1249/MSS.0000000000003897" target="_blank" rel="noopener">
+          Read the paper
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
       </div>
     </div>
   </section>
