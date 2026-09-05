@@ -7,3 +7,7 @@ node_modules/
 # Local helper scripts (not for production)
 setup-*.sh
 generate-og-image.py
+
+# Third-party marketing skills (coreyhaines31/marketingskills, MIT)
+.claude/skills/
+.claude/product-marketing.md
