@@ -1,6 +1,6 @@
 # Privacy Policy — LiftIQ
 
-**Last updated: March 1, 2026**
+**Last updated: September 21, 2026**
 
 LiftIQ ("we", "our", or "us") operates the LiftIQ mobile application (the "App"). This policy explains what information we collect, how we use it, and your rights.
 
@@ -25,7 +25,7 @@ Information you voluntarily provide: display name, profile photo, date of birth,
 If you use the coaching feature: check-in submissions (including optional photos), coach messages, and chat history.
 
 ### Usage & Analytics
-Anonymised event data (e.g. "workout completed", "meal logged") to understand how the App is used and improve it. No personally identifiable information is attached to analytics events.
+We use HeyCatch for product analytics, including app opens, screen views, taps and subscription-start events. When you sign in, these events can be linked to your internal user ID, email address and account creation date. Subscription events include the plan identifier. The SDK also collects session identifiers and device information. We use this information to understand feature usage and improve LiftIQ.
 
 ### Food Photos
 Food photos you submit for nutritional analysis are sent to our AI processing partner (Groq, Inc.) for image recognition. Photos are processed in real-time and are not permanently stored on our servers. Processing is subject to Groq's data handling policies.
@@ -56,12 +56,15 @@ We do not sell your personal data to third parties.
 | **Supabase** | Database, authentication, file storage | [supabase.com/privacy](https://supabase.com/privacy) |
 | **RevenueCat** | Subscription management & billing | [revenuecat.com/privacy](https://www.revenuecat.com/privacy) |
 | **Groq, Inc.** | AI Coach message processing (Llama 3.3) | [groq.com/privacy](https://groq.com/privacy) |
+| **HeyCatch** | Website and app product analytics, including linked account and subscription events | [heycatch.ai/privacy](https://heycatch.ai/privacy) |
 | **Sentry** | Crash reporting & error monitoring | [sentry.io/privacy](https://sentry.io/privacy/) |
 | **Apple Health** | Fitness data read/write (iOS, opt-in) | [apple.com/legal/privacy](https://www.apple.com/legal/privacy/) |
 
 AI Coach messages you send are processed by Groq's servers. Do not include sensitive personal or medical information in AI Coach messages.
 
 ---
+
+Our English and Spanish landing pages also use HeyCatch for page views, clicks and referral sources, with pseudonymous session identifiers, device/browser data and request information such as IP address. HeyCatch uses PostHog and AI service providers for analytics reports; see its [sub-processors](https://heycatch.ai/subprocessors).
 
 ## 4. Data Retention
 
@@ -70,7 +73,7 @@ AI Coach messages you send are processed by Groq's servers. Do not include sensi
 - **AI chat messages:** stored in our database, deleted on account deletion
 - **Food photos:** processed in real-time, not stored permanently
 - **Crash reports (Sentry):** retained up to 90 days
-- **Analytics events:** retained until account deletion
+- **Analytics events:** held by our analytics processor under its retention policy; contact support@liftiqsolutions.app to request access or deletion
 
 ---
 
@@ -179,4 +182,4 @@ If you have questions about this Privacy Policy or your data, contact us at:
 
 ---
 
-*This privacy policy was last updated on March 1, 2026.*
+*This privacy policy was last updated on September 21, 2026.*
