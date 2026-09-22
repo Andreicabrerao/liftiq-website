@@ -4,11 +4,20 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self' https://cloudflareinsights.com https://static.cloudflareinsights.com; base-uri 'self'; form-action 'self'; upgrade-insecure-requests" />
+  <!-- Security headers (meta-tag fallback; GitHub Pages does not support real HTTP headers) -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://static.cloudflareinsights.com https://esm.sh https://in.heycatch.ai; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self' https://cloudflareinsights.com https://static.cloudflareinsights.com https://in.heycatch.ai; base-uri 'self'; form-action 'self'; upgrade-insecure-requests" />
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
   <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=(), usb=(), accelerometer=(), gyroscope=(), magnetometer=()" />
+
+  <script type="module">
+    import { analytics } from 'https://esm.sh/@heycatch/sdk@0.7.0';
+    analytics.init({
+      projectKey: 'hck_pk_aQdS2pASnZ6L9_FyFWWwS61h0-8Hhie4',
+      install: { framework: 'web', agent: 'claude-code' },
+      requestBatching: false,
+    });
+  </script>
 
   <title>LiftIQ: App de Entrenamiento de Fuerza con IA para iPhone</title>
   <meta name="description" content="App de entrenamiento de fuerza con IA para iPhone y iPad. Registra entrenamientos y nutrición gratis: 184 ejercicios con videos reales. Pro añade sugerencias de peso basadas en el ACSM 2026. 7 días gratis." />
