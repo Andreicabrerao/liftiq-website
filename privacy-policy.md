@@ -1,4 +1,4 @@
-# Privacy Policy — LiftIQ
+# Privacy Policy: LiftIQ
 
 **Last updated: September 21, 2026**
 
@@ -104,7 +104,7 @@ When you delete your account (via **Profile → Delete Account**), the following
 Depending on your location, you may have rights to:
 - **Access** the personal data we hold about you
 - **Correct** inaccurate data
-- **Delete** your data — use the in-app Delete Account feature
+- **Delete** your data: use the in-app Delete Account feature
 - **Export** your data (contact us)
 - **Opt out** of analytics (contact us)
 
