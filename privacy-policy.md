@@ -1,6 +1,6 @@
 # Privacy Policy: LiftIQ
 
-**Last updated: September 21, 2026**
+**Last updated: September 25, 2026**
 
 LiftIQ ("we", "our", or "us") operates the LiftIQ mobile application (the "App"). This policy explains what information we collect, how we use it, and your rights.
 
@@ -22,7 +22,10 @@ Information you voluntarily provide: display name, profile photo, date of birth,
 - With your permission, we read **Active Energy Burned** and **Step Count** from Apple Health, and write completed workouts and body weight back to Apple Health
 
 ### Coaching Data
-If you use the coaching feature: check-in submissions (including optional photos), coach messages, and chat history.
+If you use human coaching, we store coach profile and application details, connection requests, messages, check-ins (including optional photos), and workout or nutrition proposals and decisions. Athletes choose separately whether a connected coach may view training, nutrition, measurements, and progress photos. Check-in photos are private unless the athlete shares each photo with their connected coach.
+
+### Sharing With a Human Coach
+Only approved coaches who are actively connected to an athlete may access the categories that athlete has chosen to share. Turning a category off stops new access to it; ending or changing the relationship removes the former coach's access to the athlete record. A photo already opened may remain available briefly, and a coach may retain a copy saved outside LiftIQ. Coaching messages, check-ins, and proposals are available to the people in that coaching relationship. Coaches may opt into generic activity notifications and configure notification types and quiet hours.
 
 ### Usage & Analytics
 We use HeyCatch for product analytics, including app opens, screen views, taps and subscription-start events. When you sign in, these events can be linked to your internal user ID, email address and account creation date. Subscription events include the plan identifier. The SDK also collects session identifiers and device information. We use this information to understand feature usage and improve LiftIQ.
@@ -81,7 +84,7 @@ Our English and Spanish landing pages also use HeyCatch for page views, clicks a
 
 We use industry-standard measures including:
 - TLS encryption for all data in transit
-- Row-level security on all database tables (each user can only access their own data)
+- Row-level security on database tables, including active-relationship and athlete-sharing checks for coach access
 - Passwords are hashed and never stored in plain text
 - Profile photos and check-in images are stored in private Supabase Storage buckets
 

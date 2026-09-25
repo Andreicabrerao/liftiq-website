@@ -2,7 +2,7 @@
 
 > LiftIQ is a strength training and nutrition app for iPhone and iPad, available in English and Spanish.
 
-Free features include workout logging and history, an exercise library with demonstration videos, and nutrition and macro tracking. LiftIQ Pro adds adaptive workout plans, per-exercise weight suggestions, an AI coach, and photo-based food estimates. Apple Health integration can bring steps and active calories into the app; Apple Watch is optional.
+Free features include workout logging and history, 800+ illustrated exercise guides and demo videos for popular lifts, and nutrition and macro tracking. LiftIQ Pro adds adaptive workout plans, per-exercise weight suggestions, an AI coach, and photo-based food estimates. Apple Health integration can bring steps and active calories into the app; Apple Watch is optional. Version 1.2.6 also supports human coaching: browse approved coaches, request a connection, choose which training, nutrition, measurement, and progress-photo data to share, exchange messages and check-ins, and accept or decline coach-proposed workout or nutrition changes. Approved coaches have a separate workspace and roster plans separate from athlete Pro.
 
 LiftIQ Pro is listed at USD 9.99 monthly or USD 59.99 yearly with a 7-day free trial for eligible users. Local prices and trial eligibility are shown in the App Store. Subscriptions renew automatically unless canceled. LiftIQ provides general fitness information, not medical care.
 
