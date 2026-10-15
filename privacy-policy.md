@@ -1,6 +1,6 @@
 # Privacy Policy: LiftIQ
 
-**Last updated: September 25, 2026**
+**Last updated: October 14, 2026**
 
 LiftIQ ("we", "our", or "us") operates the LiftIQ mobile application (the "App"). This policy explains what information we collect, how we use it, and your rights.
 
@@ -86,7 +86,9 @@ We use industry-standard measures including:
 - TLS encryption for all data in transit
 - Row-level security on database tables, including active-relationship and athlete-sharing checks for coach access
 - Passwords are hashed and never stored in plain text
-- Profile photos and check-in images are stored in private Supabase Storage buckets
+- Progress, check-in and physique photos are stored in private storage and shown only through temporary links
+
+**Profile photos.** Adding a profile photo is optional. We use it to show your account in the app, to you and to a coach you connect with. Profile photos and coach directory photos are stored as files with a web address that is not protected by a password: anyone who obtains that address may be able to view or save the image, so choose a photo you are comfortable with. The list of stored photos is not public. We do not use profile photos for face recognition, we do not analyze them with AI and we do not use them in advertising. When you delete your account, we delete your stored photos; copies someone already saved and short-lived copies held by our content delivery network may remain for a limited time. To report an inappropriate photo, write to support@liftiqsolutions.app.
 
 ---
 
@@ -185,4 +187,4 @@ If you have questions about this Privacy Policy or your data, contact us at:
 
 ---
 
-*This privacy policy was last updated on September 21, 2026.*
+*This privacy policy was last updated on October 14, 2026.*
